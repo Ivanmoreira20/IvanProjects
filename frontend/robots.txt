@@ -1,0 +1,21 @@
+# Vertex CRM — https://vertexcrm.tech
+#
+# O que este arquivo faz: pede aos buscadores que indexem as páginas públicas e
+# fiquem fora do aplicativo. O que ele NÃO faz: proteger nada. `robots.txt` é um
+# pedido, e um robô mal-intencionado o ignora — inclusive lendo aqui uma lista
+# de caminhos interessantes. Por isso não há nenhum caminho sensível listado:
+# quem protege /api e /app são a sessão e as permissões do servidor.
+
+User-agent: *
+Allow: /$
+Allow: /como-funciona
+Allow: /planos
+Allow: /termos
+Allow: /privacidade
+
+# O CRM em si não tem o que indexar: é uma tela de login para quem não entrou.
+Disallow: /app
+Disallow: /api/
+Disallow: /proposta/
+
+Sitemap: https://vertexcrm.tech/sitemap.xml

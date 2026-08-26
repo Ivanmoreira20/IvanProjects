@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0A0710">
+<title>Como funciona o Vertex CRM — clientes, funil, equipe e acompanhamento</title>
+<meta name="description" content="Como o Vertex CRM organiza clientes, negócios, tarefas, propostas e equipe — e como o acompanhamento mostra o que precisa de atenção. Todos os recursos e as dúvidas frequentes numa página só.">
+<link rel="canonical" href="https://vertexcrm.tech/como-funciona">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vertex CRM">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Como funciona o Vertex CRM">
+<meta property="og:description" content="Clientes, negócios, tarefas, propostas e equipe — e o acompanhamento do que precisa de atenção. Cada recurso explicado com calma.">
+<meta property="og:url" content="https://vertexcrm.tech/como-funciona">
+<meta property="og:image" content="https://vertexcrm.tech/img/og-dashboard.jpg?v=fc610a6f84">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="favicon.svg?v=e02621e8e6" type="image/svg+xml">
+<link rel="icon" href="favicon.ico?v=49db5a4f98" sizes="16x16 32x32 48x48">
+<link rel="stylesheet" href="css/landing.css?v=61cd81914f">
+<script type="module" src="js/landing.js?v=328a7b6513"></script>
+</head>
+<body class="lp">
+
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0"><defs>
+  <symbol id="i-mark" viewBox="0 0 64 64">
+    <path d="M15.37 22.4 32 12.8 48.63 22.4 32 32Z" fill="#C884FC"/>
+    <path d="M15.37 22.4 32 32v19.2L15.37 41.6Z" fill="#A855F7"/>
+    <path d="M48.63 22.4v19.2L32 51.2V32Z" fill="#6D28D9"/>
+    <g fill="none" stroke="#E9D5FF" stroke-opacity=".92" stroke-width="1.15" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M32 12.8 48.63 22.4v19.2L32 51.2 15.37 41.6V22.4Z"/><path d="M15.37 22.4 32 32"/><path d="M48.63 22.4 32 32"/><path d="M32 51.2V32"/>
+    </g>
+  </symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 20v-1.6a4 4 0 0 0-4-4H6.5a4 4 0 0 0-4 4V20"/><circle cx="9.2" cy="7.4" r="3.4"/><path d="M21.5 20v-1.6a4 4 0 0 0-3-3.9M16.4 4.2a4 4 0 0 1 0 6.4"/></symbol>
+  <symbol id="i-columns" viewBox="0 0 24 24"><path d="M4 4h4.4v16H4zM9.8 4h4.4v10.5H9.8zM15.6 4H20v13.2h-4.4z"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 4v15.2a.8.8 0 0 0 .8.8H20"/><path d="M7.6 15.4 11 11l3 2.6 4.2-5.6"/></symbol>
+  <symbol id="i-inbox" viewBox="0 0 24 24"><path d="M20.4 13.6h-4.6l-1.4 2.4H9.6l-1.4-2.4H3.6"/><path d="M6.9 5.1 3.6 13.6v4.2a1.6 1.6 0 0 0 1.6 1.6h13.6a1.6 1.6 0 0 0 1.6-1.6v-4.2L17.1 5.1a1.6 1.6 0 0 0-1.5-1H8.4a1.6 1.6 0 0 0-1.5 1"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3.2 13.9 9l5.9 1.9-5.9 1.9L12 18.6l-1.9-5.8-5.9-1.9L10.1 9z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path d="M4.4 5.4h15.2a1.6 1.6 0 0 1 1.6 1.6v10a1.6 1.6 0 0 1-1.6 1.6H4.4a1.6 1.6 0 0 1-1.6-1.6V7a1.6 1.6 0 0 1 1.6-1.6"/><path d="m3 7.4 9 5.6 9-5.6"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M20.4 11.6a7.6 7.6 0 0 1-8.2 7.6 8.6 8.6 0 0 1-3.4-.8L3.6 20l1.6-5a7.4 7.4 0 0 1-.8-3.4 7.6 7.6 0 0 1 7.6-8.2h.4a7.6 7.6 0 0 1 8 8z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><path d="M12 6.8V12l3.4 2"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3.2H7.4a1.8 1.8 0 0 0-1.8 1.8v14a1.8 1.8 0 0 0 1.8 1.8h9.2a1.8 1.8 0 0 0 1.8-1.8V7.6z"/><path d="M14 3.2v4.4h4.4"/><path d="M9 12.6h6M9 16.2h6"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4.6M5 4.6h9.4l.8 1.6h4.2v8.4h-5l-.8-1.6H5"/></symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 8h10M18 8h2M4 16h4M12 16h8"/><circle cx="16" cy="8" r="2.2"/><circle cx="10" cy="16" r="2.2"/></symbol>
+  <symbol id="i-sheet" viewBox="0 0 24 24"><path d="M4.4 4h15.2v16H4.4z"/><path d="M4.4 9.4h15.2M4.4 14.6h15.2M9.8 4v16M15.2 4v16"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.6 4.6 4.6L19 6.8"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.4"/><circle cx="12" cy="12" r="4.6"/><circle cx="12" cy="12" r=".9"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3.2 19.4 6v6.2c0 4.4-3 7.2-7.4 8.6-4.4-1.4-7.4-4.2-7.4-8.6V6z"/><path d="m9 12.2 2.2 2.2 4-4.2"/></symbol>
+  <symbol id="i-arrow-r" viewBox="0 0 24 24"><path d="M4.6 12h14.8M13.4 6l6 6-6 6"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+</defs></svg>
+
+<header class="hd" id="hd">
+  <div class="hd__in wrap">
+    <a class="brand" href="/" aria-label="Vertex CRM, início">
+      <span class="brand__mark"><svg class="ico" aria-hidden="true"><use href="#i-mark"></use></svg></span>
+      <span class="brand__name">Vertex <span class="brand__dim">CRM</span></span>
+    </a>
+
+    <nav class="hd__nav" id="hd-nav" aria-label="Seções do site">
+      <a href="/?ficar#plataforma">Produto</a>
+      <a href="/?ficar#para-quem">Para quem</a>
+      <a href="#recursos" aria-current="page">Como funciona</a>
+      <a href="/planos">Planos</a>
+      <a href="/?ficar#compromissos">Segurança</a>
+    </nav>
+
+    <div class="hd__act">
+      <a class="btn btn--ghost" href="/app#/login">Entrar</a>
+      <a class="btn btn--primary" href="/app#/registrar">Criar minha conta</a>
+    </div>
+
+    <button class="hd__burger" id="hd-burger" type="button" aria-expanded="false" aria-controls="hd-nav" aria-label="Abrir menu">
+      <svg class="ico ico--open" aria-hidden="true"><use href="#i-menu"></use></svg>
+      <svg class="ico ico--shut" aria-hidden="true"><use href="#i-close"></use></svg>
+    </button>
+  </div>
+</header>
+
+<main id="conteudo">
+
+<section class="sec sec--top" id="pipeline">
+  <div class="wrap">
+    <header class="sec__head sec__head--mid reveal">
+      <p class="eyebrow">Como funciona</p>
+      <h1 class="sec__h">O Vertex por inteiro, explicado com calma</h1>
+      <p class="sec__p">
+        Um CRM guarda quatro coisas: os seus <strong>clientes</strong>, as <strong>oportunidades</strong> abertas com
+        cada um, o que <strong>precisa ser feito a seguir</strong> e o <strong>registro do que já aconteceu</strong>.
+        Esta página percorre todas — e começa pelo funil, porque é ali que as oportunidades vivem. Cada negócio
+        ocupa uma etapa, e só uma. Arraste o card quando a conversa avançar: o Vertex registra a mudança e recalcula
+        na hora quantos negócios e quanto dinheiro existem em cada fase.
+      </p>
+    </header>
+
+    <ol class="flow reveal" aria-label="Etapas do funil de vendas">
+      <li class="flow__st"><span class="flow__n">1</span><span class="flow__l">Prospecção</span></li>
+      <li class="flow__ar" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-arrow-r"></use></svg></li>
+      <li class="flow__st"><span class="flow__n">2</span><span class="flow__l">Qualificação</span></li>
+      <li class="flow__ar" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-arrow-r"></use></svg></li>
+      <li class="flow__st"><span class="flow__n">3</span><span class="flow__l">Proposta</span></li>
+      <li class="flow__ar" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-arrow-r"></use></svg></li>
+      <li class="flow__st"><span class="flow__n">4</span><span class="flow__l">Negociação</span></li>
+      <li class="flow__ar" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-arrow-r"></use></svg></li>
+      <li class="flow__st flow__st--win"><span class="flow__n"><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg></span><span class="flow__l">Ganho</span></li>
+    </ol>
+
+    <p class="flow__note reveal">
+      Quatro etapas até o fim, mais <strong>Ganho</strong> e <strong>Perdido</strong> como fechamento.
+      Marcar um negócio como perdido <strong>exige o motivo</strong> — preço, concorrente, sem orçamento,
+      sem resposta, prazo, desistência —, e é esse motivo que, somado mês a mês, responde por que você
+      está perdendo vendas. O relatório fica em Relatórios, com a conta em dinheiro ao lado da contagem.
+    </p>
+
+    <figure class="shot shot--sm reveal">
+      <div class="shot__bar">
+        <span class="shot__dot"></span><span class="shot__dot"></span><span class="shot__dot"></span>
+        <span class="shot__url">vertexcrm.tech/app#/negocios</span>
+      </div>
+      <div class="shot__frame">
+        <img src="img/negocios.webp?v=113984b555" width="2160" height="1350" loading="lazy" decoding="async"
+             alt="Quadro de negócios do Vertex CRM em formato Kanban, com as colunas Prospecção, Qualificação, Proposta, Negociação, Ganho e Perdido, e o valor e a prioridade de cada negócio.">
+      </div>
+    </figure>
+  </div>
+</section>
+
+<section class="band band--split" id="followup">
+  <div class="wrap split">
+    <div class="split__txt reveal">
+      <p class="eyebrow">O diferencial</p>
+      <h2 class="sec__h">Organizar é o começo. O sistema também lembra por você.</h2>
+      <p class="sec__p">
+        Depois que clientes, negócios e tarefas estão no lugar, entra a parte que uma planilha não faz: o Vertex
+        varre o seu funil sozinho e separa o que precisa de atenção hoje, com o motivo escrito por extenso e o
+        valor que está parado junto:
+      </p>
+      <ul class="ticks">
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg>Proposta enviada há dias e ainda sem resposta</li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg>Lead que entrou e nunca foi contatado</li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg>Negócio parado na mesma etapa tempo demais</li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg>Cliente de alto valor sem movimento recente</li>
+      </ul>
+      <p class="sec__p">
+        De cada alerta você resolve na hora: abre o negócio ou registra o contato, e ele sai da lista. O contador no
+        menu mostra quantos sobraram.
+      </p>
+    </div>
+
+    <div class="fup reveal" role="img" aria-label="Painel de acompanhamento do Vertex: três oportunidades precisando de atenção.">
+      <div class="fup__hd">
+        <span class="fup__badge">3</span>
+        <span>oportunidades precisam de atenção</span>
+      </div>
+      <ul class="fup__list">
+        <li class="fup__item">
+          <div class="fup__top"><strong>Construtora Aurora</strong><span class="fup__val">R$ 48.000</span></div>
+          <p class="fup__why">Proposta enviada há 5 dias, sem resposta.</p>
+          <div class="fup__acts"><span class="chip">Ver negócio</span><span class="chip">Registrar contato</span></div>
+        </li>
+        <li class="fup__item">
+          <div class="fup__top"><strong>Clínica Vetor</strong><span class="fup__val">R$ 12.500</span></div>
+          <p class="fup__why">Sem contato há 9 dias.</p>
+          <div class="fup__acts"><span class="chip">Criar tarefa</span><span class="chip">Registrar contato</span></div>
+        </li>
+        <li class="fup__item fup__item--mute">
+          <div class="fup__top"><strong>Móveis Habita</strong><span class="fup__val">R$ 7.200</span></div>
+          <p class="fup__why">Parado em Negociação há 14 dias.</p>
+        </li>
+      </ul>
+      <p class="fup__foot">Exemplo com nomes fictícios. No seu Vertex, os números vêm dos seus negócios.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="recursos">
+  <div class="wrap">
+    <header class="sec__head reveal">
+      <p class="eyebrow">Recursos</p>
+      <h2 class="sec__h">Os módulos da plataforma, um a um</h2>
+      <p class="sec__p">Nenhuma funcionalidade existe aqui para engordar lista. Cada uma responde a uma pergunta que quem toca a operação faz toda semana — e o que ainda não existe está separado embaixo, como plano e não como recurso.</p>
+    </header>
+
+    <ul class="cards cards--3">
+      <li class="card reveal">
+        <span class="card__ico"><svg class="ico" aria-hidden="true"><use href="#i-columns"></use></svg></span>
+        <h3 class="card__h">Pipeline visual</h3>
+        <p class="card__p">Arraste negócios entre etapas e veja o funil inteiro numa tela, com quantidade e valor por fase.</p>
+        <p class="card__q">“Qual venda está mais perto de acontecer?”</p>
+      </li>
+      <li class="card reveal">
+        <span class="card__ico"><svg class="ico" aria-hidden="true"><use href="#i-users"></use></svg></span>
+        <h3 class="card__h">Gestão de leads</h3>
+        <p class="card__p">Contato, empresa, origem, segmento, valor potencial e responsável. Com busca, filtros e exportação.</p>
+        <p class="card__q">“Quem eu tenho para trabalhar?”</p>
+      </li>
+      <li class="card reveal">
+        <span class="card__ico"><svg class="ico" aria-hidden="true"><use href="#i-inbox"></use></svg></span>
+        <h3 class="card__h">Acompanhamento</h3>
+        <p class="card__p">A lista do que parou no funil, ordenada pela urgência, com o motivo e o valor de cada caso.</p>
+        <p class="card__q">“Quem eu preciso contatar agora?”</p>
+      </li>
+      <li class="card reveal">
+        <span class="card__ico"><svg class="ico" aria-hidden="true"><use href="#i-grid"></use></svg></span>
+        <h3 class="card__h">Dashboard</h3>
+        <p class="card__p">Receita do mês, ticket médio, conversão e valor no pipeline. Sempre com os seus dados, nunca com exemplos.</p>
+        <p class="card__q">“Como estamos este mês?”</p>
+      </li>
+      <li class="card reveal">
+        <span class="card__ico"><svg class="ico" aria-hidden="true"><use href="#i-chart"></use></svg></span>
+        <h3 class="card__h">Relatórios</h3>
+        <p class="card__p">Vendas mês a mês, funil por etapa e o resumo com quantos negócios e quanto valor há em cada fase.</p>
+        <p class="card__q">“Onde o funil está travando?”</p>
+      </li>
+      <li class="card reveal">
+        <span class="card__ico"><svg class="ico" aria-hidden="true"><use href="#i-clock"></use></svg></span>
+        <h3 class="card__h">Histórico de cada negócio</h3>
+        <p class="card__p">Ligações, reuniões e tarefas que você registra, mais tudo que o sistema anota sozinho — mudança de etapa, proposta aberta pelo cliente, automação que rodou. Numa lista só, em ordem.</p>
+        <p class="card__q">“O que já aconteceu com este cliente?”</p>
+      </li>
+      <li class="card reveal">
+        <span class="card__ico"><svg class="ico" aria-hidden="true"><use href="#i-doc"></use></svg></span>
+        <h3 class="card__h">Propostas com link</h3>
+        <p class="card__p">Monte itens e valores, mande um link, e saiba a hora em que o cliente abriu. Ele aceita ou recusa ali mesmo, e o negócio muda de etapa sozinho.</p>
+        <p class="card__q">“Ele viu a minha proposta?”</p>
+      </li>
+      <li class="card reveal">
+        <span class="card__ico"><svg class="ico" aria-hidden="true"><use href="#i-spark"></use></svg></span>
+        <h3 class="card__h">Automações</h3>
+        <p class="card__p">Você escreve a regra uma vez — quando isto acontecer, faça aquilo — e o Vertex passa a agir sozinho: cria tarefa, cobra proposta parada, avisa quando algo trava.</p>
+        <p class="card__q">“O que eu paro de fazer à mão?”</p>
+      </li>
+      <li class="card reveal">
+        <span class="card__ico"><svg class="ico" aria-hidden="true"><use href="#i-flag"></use></svg></span>
+        <h3 class="card__h">Por que você perde</h3>
+        <p class="card__p">Perder um negócio exige dizer o motivo. Somados, eles viram o relatório de causas — em quantidade, em dinheiro e mês a mês.</p>
+        <p class="card__q">“Estou perdendo por preço ou por demora?”</p>
+      </li>
+      <li class="card reveal">
+        <span class="card__ico"><svg class="ico" aria-hidden="true"><use href="#i-sliders"></use></svg></span>
+        <h3 class="card__h">Do seu jeito</h3>
+        <p class="card__p">Crie os campos que o seu processo exige — CNPJ, porte, data de renovação — sem esperar uma versão nova do sistema. Eles aparecem no cadastro, na página do negócio e na busca.</p>
+        <p class="card__q">“Onde eu guardo o que é meu?”</p>
+      </li>
+      <li class="card reveal">
+        <span class="card__ico"><svg class="ico" aria-hidden="true"><use href="#i-shield"></use></svg></span>
+        <h3 class="card__h">Cada conta é uma ilha</h3>
+        <p class="card__p">Seus dados são carregados a partir da sua sessão, nunca de um identificador que venha do navegador.</p>
+        <p class="card__q">“Meus dados estão separados?”</p>
+      </li>
+    </ul>
+
+    <div class="soon reveal">
+      <div class="soon__hd">
+        <h3 class="soon__h">No caminho</h3>
+        <p class="soon__p">Ainda não está no ar. Aparece aqui para você saber para onde o produto vai, não para contar como recurso.</p>
+      </div>
+      <ul class="soon__list">
+        <li><span class="pill">A seguir</span><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg><div><strong>Aviso por e-mail</strong><span>O resumo do que precisa de atenção chegando na sua caixa, sem você precisar abrir o sistema. Hoje o aviso existe, mas só dentro do sistema.</span></div></li>
+        <li><span class="pill">A seguir</span><svg class="ico" aria-hidden="true"><use href="#i-chat"></use></svg><div><strong>WhatsApp ligado de verdade</strong><span>A integração com a API oficial já está no produto, com tela de conexão, modelos de mensagem e registro no histórico. Falta o credenciamento da conta comercial na Meta, que é feito lá — não aqui.</span></div></li>
+        <li><span class="pill">Depois</span><svg class="ico" aria-hidden="true"><use href="#i-spark"></use></svg><div><strong>Assinatura na proposta</strong><span>Hoje o cliente aceita pelo link, e ficam registrados nome, data, hora e endereço de rede. Assinatura com certificado ICP-Brasil é outra coisa, e ainda não existe.</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="beneficios">
+  <div class="wrap">
+    <header class="sec__head sec__head--mid reveal">
+      <p class="eyebrow">O que muda na prática</p>
+      <h2 class="sec__h">Em poucos segundos você sabe onde está</h2>
+    </header>
+
+    <ul class="bens">
+      <li class="ben reveal"><svg class="ico" aria-hidden="true"><use href="#i-chart"></use></svg><div><strong>Previsão em vez de palpite.</strong> Você enxerga quanto dinheiro há no funil e em que fase ele está.</div></li>
+      <li class="ben reveal"><svg class="ico" aria-hidden="true"><use href="#i-target"></use></svg><div><strong>O que parou fica visível.</strong> No quadro, a coluna cheia denuncia sozinha onde o funil trava.</div></li>
+      <li class="ben reveal"><svg class="ico" aria-hidden="true"><use href="#i-users"></use></svg><div><strong>O histórico fica na empresa.</strong> Não no celular de quem atendeu.</div></li>
+      <li class="ben reveal"><svg class="ico" aria-hidden="true"><use href="#i-sheet"></use></svg><div><strong>Fim do vaivém de planilhas.</strong> Uma base só, e o CSV pronto quando você quiser levá-la embora.</div></li>
+      <li class="ben reveal"><svg class="ico" aria-hidden="true"><use href="#i-clock"></use></svg><div><strong>Começa em minutos.</strong> Sem instalação, sem implantação, sem consultor.</div></li>
+      <li class="ben reveal"><svg class="ico" aria-hidden="true"><use href="#i-shield"></use></svg><div><strong>Sem rastreador nenhum.</strong> Nenhum pixel, nenhuma análise de terceiro, nenhum dado vendido.</div></li>
+    </ul>
+
+    <figure class="shot shot--sm reveal">
+      <div class="shot__bar">
+        <span class="shot__dot"></span><span class="shot__dot"></span><span class="shot__dot"></span>
+        <span class="shot__url">vertexcrm.tech/app#/relatorios</span>
+      </div>
+      <div class="shot__frame">
+        <img src="img/relatorios.webp?v=1ba5398247" width="2160" height="1350" loading="lazy" decoding="async"
+             alt="Relatórios do Vertex CRM: gráfico de vendas mensais, funil por status e tabela de resumo com participação de cada etapa.">
+      </div>
+    </figure>
+  </div>
+</section>
+
+<section class="sec" id="faq">
+  <div class="wrap wrap--narrow">
+    <header class="sec__head sec__head--mid reveal">
+      <p class="eyebrow">Dúvidas</p>
+      <h2 class="sec__h">Perguntas frequentes</h2>
+    </header>
+
+    <div class="faq" id="faq-list">
+      <details class="faq__i reveal" name="faq">
+        <summary class="faq__q">O que é o Vertex, afinal?<svg class="ico faq__c" aria-hidden="true"><use href="#i-chevron"></use></svg></summary>
+        <div class="faq__a"><p>É um <strong>CRM</strong>: o sistema onde ficam os seus clientes, as oportunidades abertas com cada um, as tarefas do que precisa ser feito, as propostas enviadas e o registro de tudo o que já aconteceu — no lugar da planilha, do caderno e da memória. Some a isso a equipe com papéis, as automações, os relatórios e uma camada de inteligência que ordena o seu dia. O que separa o Vertex de outro CRM é o <strong>acompanhamento</strong>: ele percebe sozinho quando um negócio parou de andar e cobra você antes de a oportunidade esfriar. Organizar é o começo; saber qual é o próximo passo é o resto.</p></div>
+      </details>
+
+      <details class="faq__i reveal" name="faq">
+        <summary class="faq__q">Serve para o meu tipo de negócio?<svg class="ico faq__c" aria-hidden="true"><use href="#i-chevron"></use></svg></summary>
+        <div class="faq__a"><p>Provavelmente sim, se o seu trabalho passa por atender clientes e acompanhar oportunidades até uma decisão: profissional independente, prestador de serviço, agência, escritório, pequena empresa, operação B2B ou um time comercial inteiro. O Vertex não pressupõe um setor — pressupõe que existe um cliente, uma oportunidade e um próximo passo. Para adaptar ao seu processo há os <strong>campos personalizados</strong>: você cria os campos que o seu negócio exige e eles passam a aparecer no cadastro, na página do negócio e na busca. O que ainda <em>não</em> dá para mudar são os nomes das seis etapas do funil, que são fixas — se o seu processo depende de etapas com outros nomes, é melhor saber disso agora.</p></div>
+      </details>
+
+      <details class="faq__i reveal" name="faq">
+        <summary class="faq__q">Preciso pagar para usar? Existe algum período de teste?<svg class="ico faq__c" aria-hidden="true"><use href="#i-chevron"></use></svg></summary>
+        <div class="faq__a"><p>Sim, o Vertex é pago, e não existe período de teste: a assinatura começa junto com a conta. O plano de entrada é o <strong>Iniciante</strong>, por R$ 39,99/mês, com o CRM completo. Preferimos cobrar um preço honesto desde o primeiro dia a manter um gratuito que morreria junto com a empresa. O que existe no lugar do teste é o contrário do aprisionamento: sem fidelidade, cancelando em um botão, com os seus dados exportáveis o tempo todo — e os <strong>7 dias de arrependimento</strong> que o Código de Defesa do Consumidor garante em toda compra pela internet.</p></div>
+      </details>
+
+      <details class="faq__i reveal" name="faq">
+        <summary class="faq__q">Existe fidelidade? Posso cancelar quando quiser?<svg class="ico faq__c" aria-hidden="true"><use href="#i-chevron"></use></svg></summary>
+        <div class="faq__a"><p>Não há fidelidade, prazo mínimo nem multa. O cancelamento é um botão dentro de <em>Plano e cobrança</em>, e vale a partir do fim do período já pago — você continua com acesso até o dia que pagou, e não há cobrança nova depois disso. Não pedimos que você ligue para ninguém nem escreva um e-mail pedindo permissão.</p></div>
+      </details>
+
+      <details class="faq__i reveal" name="faq">
+        <summary class="faq__q">Como funciona a troca do Iniciante para o Pro?<svg class="ico faq__c" aria-hidden="true"><use href="#i-chevron"></use></svg></summary>
+        <div class="faq__a"><p>Pela tela <em>Plano e cobrança</em>, escolhendo o Pro. O acesso aos recursos do Pro passa a valer assim que o pagamento é confirmado pelo Mercado Pago — não é preciso criar outra conta nem mover dado nenhum, porque o plano é uma permissão sobre a mesma conta. Descer de volta para o Iniciante também é possível: os recursos exclusivos do Pro deixam de abrir, mas <strong>nada que você cadastrou é apagado</strong>.</p></div>
+      </details>
+
+      <details class="faq__i reveal" name="faq">
+        <summary class="faq__q">Posso ter uma equipe na mesma conta?<svg class="ico faq__c" aria-hidden="true"><use href="#i-chevron"></use></svg></summary>
+        <div class="faq__a"><p>Sim, no plano Pro. Você convida cada pessoa por um link e escolhe o papel dela: <strong>Admin</strong> (tudo, inclusive a cobrança), <strong>Gestor</strong> (vê tudo e cuida da equipe, mas não mexe no pagamento) ou <strong>Vendedor</strong> (vê os próprios negócios e os que ainda não têm dono). Quem sai da equipe não leva os negócios embora: eles voltam a ficar sem dono, dentro da empresa, e um gestor redistribui. E cada empresa só enxerga os próprios dados — a separação é feita no servidor, em toda consulta, e não pela tela.</p></div>
+      </details>
+
+      <details class="faq__i reveal" name="faq">
+        <summary class="faq__q">Como funciona o WhatsApp?<svg class="ico faq__c" aria-hidden="true"><use href="#i-chevron"></use></svg></summary>
+        <div class="faq__a"><p>Com franqueza: a integração com a <strong>API oficial do WhatsApp Business</strong> está construída dentro do produto — tela de conexão, modelos de mensagem aprovados, envio a partir do negócio e registro de tudo na linha do tempo do cliente. O que ainda falta é o <strong>credenciamento da conta comercial na Meta</strong>, que é feito lá e não aqui. Enquanto esse passo não estiver concluído, o envio não funciona, e por isso o WhatsApp aparece em “No caminho” e não na lista de recursos disponíveis. Não usamos o WhatsApp comum por leitura de tela nem por aparelho conectado: isso quebra os termos da Meta e derruba o número da empresa.</p></div>
+      </details>
+
+      <details class="faq__i reveal" name="faq">
+        <summary class="faq__q">Dá para migrar da minha planilha?<svg class="ico faq__c" aria-hidden="true"><use href="#i-chevron"></use></svg></summary>
+        <div class="faq__a"><p>Dá. A importação por CSV está dentro do sistema, no botão <em>Importar</em> da tela de Leads: você envia o arquivo, o Vertex mostra uma <strong>pré-visualização antes de gravar qualquer coisa</strong>, aponta as linhas com problema e ignora os contatos repetidos. Se a sua base for grande ou o formato estiver bagunçado, escreva para <a href="mailto:contato@vertexcrm.tech">contato@vertexcrm.tech</a> que ajudamos na carga inicial.</p></div>
+      </details>
+
+      <details class="faq__i reveal" name="faq">
+        <summary class="faq__q">Os dados são meus? Consigo levá-los embora?<svg class="ico faq__c" aria-hidden="true"><use href="#i-chevron"></use></svg></summary>
+        <div class="faq__a"><p>São seus. Nós somos apenas o lugar onde eles ficam guardados, e a <a href="/privacidade">Política de Privacidade</a> diz isso por escrito. A exportação em CSV fica dentro do próprio sistema, disponível o tempo todo — <strong>inclusive se você cancelar a assinatura</strong>. Não usamos o conteúdo dos seus clientes para treinar nada nem o vendemos para ninguém, e este site não carrega um único rastreador de terceiro.</p></div>
+      </details>
+
+      <details class="faq__i reveal" name="faq">
+        <summary class="faq__q">Como funciona a exclusão da conta?<svg class="ico faq__c" aria-hidden="true"><use href="#i-chevron"></use></svg></summary>
+        <div class="faq__a"><p>Em <em>Configurações → Dados e privacidade</em> existe a exclusão definitiva. Ela pede a sua senha (para que ninguém apague a sua conta usando um computador que você esqueceu aberto), mostra <strong>quanto será apagado antes de você confirmar</strong> e, confirmada, remove os seus leads, negócios, histórico, propostas e a própria conta. É irreversível: não guardamos uma cópia para o caso de você mudar de ideia. <strong>Exporte o CSV antes.</strong> Se você é o dono de uma equipe, a exclusão é bloqueada enquanto houver outras pessoas na organização — apagar a conta do dono levaria junto o trabalho de todo mundo.</p></div>
+      </details>
+
+      <details class="faq__i reveal" name="faq">
+        <summary class="faq__q">Como funciona a segurança?<svg class="ico faq__c" aria-hidden="true"><use href="#i-chevron"></use></svg></summary>
+        <div class="faq__a"><p>A senha nunca é guardada — fica apenas um resumo criptográfico (scrypt) do qual não se volta atrás. A sessão vive num cookie que o JavaScript da página não consegue ler, o site inteiro roda em HTTPS, e <strong>toda consulta ao banco filtra pela conta da sessão</strong>: pedir o registro de outra empresa responde “não encontrado”. Tentativas repetidas de login, cadastro e recuperação de senha são limitadas. Você pode ver em <em>Configurações → Segurança</em> quais aparelhos estão conectados e encerrar os outros. Há backup diário do banco, com restauração testada — não apenas cópia guardada.</p>
+        <p>O que não vamos dizer: que é 100% seguro. <strong>Nenhum sistema é</strong>, e quem afirma isso está vendendo, não explicando. O que dá para afirmar é que a segurança é tratada como requisito de cada mudança, e não como uma etapa no fim.</p></div>
+      </details>
+
+      <details class="faq__i reveal" name="faq">
+        <summary class="faq__q">Onde meus dados ficam guardados?<svg class="ico faq__c" aria-hidden="true"><use href="#i-chevron"></use></svg></summary>
+        <div class="faq__a"><p>Num servidor próprio hospedado na Alemanha (Frankfurt), acessível apenas por HTTPS. A LGPD permite essa transferência internacional, e ela está declarada na <a href="/privacidade">Política de Privacidade</a>. Se isso for um impedimento para a sua empresa, fale com a gente antes de cadastrar dados de clientes.</p></div>
+      </details>
+
+      <details class="faq__i reveal" name="faq">
+        <summary class="faq__q">O que já funciona e o que ainda não?<svg class="ico faq__c" aria-hidden="true"><use href="#i-chevron"></use></svg></summary>
+        <div class="faq__a"><p><strong>Funcionam hoje:</strong> cadastro com verificação por e-mail e recuperação de senha esquecida; leads com contato, tags, responsável e campos criados por você; importação por CSV com pré-visualização; funil de seis etapas com Ganho e Perdido; motivo obrigatório ao perder e o relatório de por que você está perdendo; linha do tempo de cada negócio; acompanhamento do que está parado; propostas com link para o cliente e aviso quando ele abre; automações; equipe com papéis (Admin, Gestor e Vendedor) no plano Pro; assistente de IA sobre os seus próprios negócios; central de notificações; busca em tudo; dashboard, relatórios e exportação em CSV.</p>
+        <p><strong>Ainda não funcionam:</strong> o envio de mensagens pelo WhatsApp — a integração está pronta no produto, mas depende do credenciamento da conta comercial na Meta; o aviso por e-mail do que precisa de atenção; e assinatura com certificado ICP-Brasil na proposta. Tudo isso está listado em “No caminho”, na seção de recursos — como plano, não como recurso disponível.</p></div>
+      </details>
+
+      <details class="faq__i reveal" name="faq">
+        <summary class="faq__q">Existe versão para celular?<svg class="ico faq__c" aria-hidden="true"><use href="#i-chevron"></use></svg></summary>
+        <div class="faq__a"><p>Não há aplicativo, mas o site funciona no navegador do celular: a barra lateral vira menu e o quadro de negócios rola na horizontal.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="final reveal">
+      <h2 class="final__h">Comece pelo que você já tem</h2>
+      <p class="final__p">Cadastre-se, traga os seus clientes e negócios atuais, e veja a operação inteira numa tela só — inclusive as oportunidades que estão paradas.</p>
+      <div class="final__cta">
+        <a class="btn btn--solid btn--lg" href="/app#/registrar">
+          Criar minha conta
+          <svg class="ico" aria-hidden="true"><use href="#i-arrow-r"></use></svg>
+        </a>
+        <a class="btn btn--glass btn--lg" href="/?ficar#demo">
+          Ver o Vertex em ação
+          <svg class="ico" aria-hidden="true"><use href="#i-arrow-r"></use></svg>
+        </a>
+      </div>
+      <p class="final__fine">Leva menos de dois minutos. Só precisamos de nome, e-mail e senha.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="ft">
+  <div class="wrap ft__in">
+    <div class="ft__brand">
+      <span class="brand">
+        <span class="brand__mark"><svg class="ico" aria-hidden="true"><use href="#i-mark"></use></svg></span>
+        <span class="brand__name">Vertex <span class="brand__dim">CRM</span></span>
+      </span>
+      <p class="ft__p">O CRM completo para organizar clientes, negócios e equipes em um só lugar — com acompanhamento inteligente para mostrar o que precisa de atenção.</p>
+      <p class="ft__copy">© 2026 Vertex CRM</p>
+    </div>
+
+    <nav class="ft__col" aria-label="Produto">
+      <h2 class="ft__h">Produto</h2>
+      <a href="/?ficar#plataforma">A plataforma</a>
+      <a href="/?ficar#demo">Demonstração</a>
+      <a href="#recursos">Todos os recursos</a>
+      <a href="#pipeline">Funil</a>
+      <a href="#followup">Acompanhamento</a>
+      <a href="/planos">Planos</a>
+      <a href="#faq">Dúvidas</a>
+    </nav>
+
+    <nav class="ft__col" aria-label="Conta">
+      <h2 class="ft__h">Conta</h2>
+      <a href="/app#/login">Entrar</a>
+      <a href="/app#/registrar">Criar conta</a>
+      <a href="mailto:contato@vertexcrm.tech">Falar com a gente</a>
+    </nav>
+
+    <nav class="ft__col" aria-label="Legal">
+      <h2 class="ft__h">Legal</h2>
+      <a href="/termos">Termos de Uso</a>
+      <a href="/privacidade">Política de Privacidade</a>
+      <a href="/privacidade#cookies">Cookies</a>
+      <a href="/privacidade#direitos">Seus direitos (LGPD)</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

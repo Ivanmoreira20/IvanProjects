@@ -1,0 +1,249 @@
+:root{
+  --dur-0:90ms;
+  --ease-spring-out:cubic-bezier(.34,1.42,.64,1);
+  --lift-1:-2px;
+  --lift-2:-4px;
+}
+
+@keyframes heliosRise{
+  from{opacity:0;transform:translate3d(0,14px,0) scale(.985)}
+  to  {opacity:1;transform:none}
+}
+
+@keyframes heliosFade{
+  from{opacity:0;transform:translate3d(0,8px,0)}
+  to  {opacity:1;transform:none}
+}
+
+@keyframes heliosSlideIn{
+  from{opacity:0;transform:translate3d(-10px,0,0)}
+  to  {opacity:1;transform:none}
+}
+
+@keyframes heliosTilt3D{
+  from{opacity:0;transform:perspective(900px) translate3d(0,18px,-40px) rotateX(7deg)}
+  to  {opacity:1;transform:perspective(900px) translate3d(0,0,0) rotateX(0)}
+}
+
+@keyframes heliosPop{
+  0%  {opacity:0;transform:scale(.9)}
+  60% {opacity:1;transform:scale(1.03)}
+  100%{opacity:1;transform:scale(1)}
+}
+
+@keyframes heliosShimmer{
+  from{transform:translate3d(-100%,0,0)}
+  to  {transform:translate3d(100%,0,0)}
+}
+
+@keyframes heliosPulse{
+  0%,100%{opacity:.55;transform:scale(1)}
+  50%    {opacity:1;  transform:scale(1.12)}
+}
+
+@keyframes heliosSpin{ to{transform:rotate(360deg)} }
+
+@keyframes heliosShake{
+  0%,100%{transform:translate3d(0,0,0)}
+  20%    {transform:translate3d(-6px,0,0)}
+  40%    {transform:translate3d(5px,0,0)}
+  60%    {transform:translate3d(-3px,0,0)}
+  80%    {transform:translate3d(2px,0,0)}
+}
+
+@keyframes heliosBreathe{
+  0%,100%{opacity:.5;  transform:translate3d(0,0,0) scale(1)}
+  50%    {opacity:.85; transform:translate3d(0,-12px,0) scale(1.06)}
+}
+
+.page-title,
+.panel,
+.chart,
+.table-wrap{
+  animation:heliosFade var(--dur-3,520ms) var(--ease-out,cubic-bezier(.16,1,.3,1)) both;
+}
+
+.kpis > .kpi{
+  animation:heliosTilt3D var(--dur-3,520ms) var(--ease-spring,cubic-bezier(.32,.72,0,1)) both;
+  transform-origin:50% 100%;
+}
+.kpis > .kpi:nth-child(1){animation-delay:40ms}
+.kpis > .kpi:nth-child(2){animation-delay:90ms}
+.kpis > .kpi:nth-child(3){animation-delay:140ms}
+.kpis > .kpi:nth-child(4){animation-delay:190ms}
+.kpis > .kpi:nth-child(n+5){animation-delay:240ms}
+
+.panel:nth-of-type(1){animation-delay:120ms}
+.panel:nth-of-type(2){animation-delay:180ms}
+.panel:nth-of-type(3){animation-delay:240ms}
+.panel:nth-of-type(n+4){animation-delay:300ms}
+
+.table tbody tr{animation:heliosFade var(--dur-2,280ms) var(--ease-out) both}
+.table tbody tr:nth-child(1){animation-delay:30ms}
+.table tbody tr:nth-child(2){animation-delay:60ms}
+.table tbody tr:nth-child(3){animation-delay:90ms}
+.table tbody tr:nth-child(4){animation-delay:120ms}
+.table tbody tr:nth-child(5){animation-delay:150ms}
+.table tbody tr:nth-child(n+6){animation-delay:170ms}
+
+.nav a,.nav button,.nav__item{
+  animation:heliosSlideIn var(--dur-2,280ms) var(--ease-out) both;
+}
+.nav :nth-child(1){animation-delay:60ms}
+.nav :nth-child(2){animation-delay:100ms}
+.nav :nth-child(3){animation-delay:140ms}
+.nav :nth-child(4){animation-delay:180ms}
+.nav :nth-child(5){animation-delay:220ms}
+
+.auth__card{
+  animation:heliosRise 620ms var(--ease-spring,cubic-bezier(.32,.72,0,1)) both;
+}
+.auth__brand  {animation:heliosFade 500ms var(--ease-out) 120ms both}
+.auth__title  {animation:heliosFade 500ms var(--ease-out) 180ms both}
+.auth__sub    {animation:heliosFade 500ms var(--ease-out) 240ms both}
+.auth__card form,
+.auth__card-in > *:nth-child(n+4){animation:heliosFade 500ms var(--ease-out) 300ms both}
+
+.auth__wrap::before{
+  content:'';position:absolute;inset:-18% -12%;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(46% 40% at 28% 22%, rgba(168,85,247,.34), transparent 70%),
+    radial-gradient(42% 38% at 76% 78%, rgba(232,121,249,.26), transparent 72%);
+  filter:blur(28px);
+  animation:heliosBreathe 9s ease-in-out infinite;
+}
+
+.auth__card.is-error,
+.is-shake{animation:heliosShake 420ms var(--ease-out) both}
+
+.kpi,.panel{
+  transition:transform var(--dur-2,280ms) var(--ease-spring),
+             box-shadow var(--dur-2,280ms) var(--ease-out),
+             border-color var(--dur-2,280ms) var(--ease-out);
+}
+@media (hover:hover) and (pointer:fine){
+  .kpi:hover,.panel:hover{
+    transform:translate3d(0,var(--lift-2),0);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.14),
+      0 28px 56px -18px rgba(0,0,0,.72),
+      0 0 0 1px rgba(168,85,247,.16);
+  }
+  .kpi:hover .kpi__badge{
+    transform:translate3d(0,-1px,0) scale(1.06);
+    transition:transform var(--dur-2) var(--ease-spring-out);
+  }
+
+  .btn:hover,.nav__item:hover{transform:translate3d(0,var(--lift-1),0)}
+  .btn:active,.nav__item:active{transform:translate3d(0,0,0) scale(.985)}
+}
+
+:focus-visible{
+  outline:2px solid var(--accent,#A855F7);
+  outline-offset:2px;
+  transition:outline-offset var(--dur-0) var(--ease-out);
+}
+
+.kanban-card,.kanban__card{
+  transition:transform var(--dur-1,160ms) var(--ease-spring),
+             box-shadow var(--dur-2,280ms) var(--ease-out),
+             opacity var(--dur-2,280ms) var(--ease-out);
+  animation:heliosFade var(--dur-2,280ms) var(--ease-out) both;
+}
+@media (hover:hover) and (pointer:fine){
+  .kanban-card:hover,.kanban__card:hover{transform:translate3d(0,-3px,0)}
+}
+
+.kanban-card.is-dragging,.kanban__card.is-dragging,.dragging{
+  opacity:.55;
+  transform:perspective(700px) translate3d(0,-6px,26px) rotate(1.6deg) scale(1.02);
+  box-shadow:0 26px 46px -14px rgba(0,0,0,.8);
+  cursor:grabbing;
+}
+.kanban-col.is-over,.kanban__col.is-over,.drag-over{
+  transition:background var(--dur-2) var(--ease-out),box-shadow var(--dur-2) var(--ease-out);
+  box-shadow:inset 0 0 0 1px var(--accent,#A855F7),0 0 28px -8px rgba(168,85,247,.5);
+}
+
+.skeleton{position:relative;overflow:hidden}
+.skeleton::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.07),transparent);
+  animation:heliosShimmer 1.25s linear infinite;
+}
+
+.spinner,.is-loading::after{animation:heliosSpin .8s linear infinite}
+
+.empty,.empty-state{animation:heliosFade var(--dur-3,520ms) var(--ease-out) both}
+.empty svg,.empty-state svg{animation:heliosPulse 3.4s ease-in-out infinite}
+
+.badge,.status-badge{animation:heliosPop var(--dur-2,280ms) var(--ease-spring-out) both}
+
+.kpi__value.is-settled{animation:heliosPop 340ms var(--ease-spring-out) both}
+
+.auth__scene canvas,.app__scene canvas{
+  display:block;width:100%;height:100%;
+  opacity:0;
+  transition:opacity 900ms var(--ease-out);
+}
+.auth__scene.is-ready canvas,.app__scene.is-ready canvas{opacity:1}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:1ms !important;
+    animation-delay:0ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:1ms !important;
+    scroll-behavior:auto !important;
+  }
+  .auth__wrap::before{animation:none;opacity:.6}
+  .skeleton::after,.empty svg,.empty-state svg{animation:none}
+  .kpis > .kpi,.panel,.chart,.table tbody tr,.nav :nth-child(n){
+    opacity:1 !important;transform:none !important;
+  }
+  @media (hover:hover){
+    .kpi:hover,.panel:hover,.btn:hover,.nav__item:hover,
+    .kanban-card:hover,.kanban__card:hover{transform:none}
+  }
+  .auth__scene canvas,.app__scene canvas{opacity:1;transition:none}
+}
+
+.attn{
+  animation:heliosFade var(--dur-4,.5s) var(--ease-out) both;
+}
+.attn__seal{
+  box-shadow:0 12px 24px -14px rgba(0,0,0,.9);
+}
+
+@media (hover:hover) and (pointer:fine){
+  .fup{
+    transition:transform .2s var(--ease-out,ease),
+               border-color .2s var(--ease-out,ease),
+               box-shadow .2s var(--ease-out,ease);
+  }
+
+  .fup:hover{
+    transform:translateY(-2px);
+    box-shadow:0 14px 30px -22px rgba(0,0,0,.6);
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .attn{animation:none}
+  .fup,.fup:hover{transform:none}
+}
+
+.boot-splash{
+  position:fixed; inset:0; z-index:60;
+  display:grid; place-items:center; align-content:center; gap:18px;
+  animation:heliosFade .3s var(--ease-out,ease) both;
+}
+.boot-splash.is-hidden{display:none}
+.boot-splash__mark{transform:scale(1.35)}
+.boot-splash__spin{
+  width:26px; height:26px; border-radius:50%;
+  border:2px solid color-mix(in srgb, var(--accent,#A855F7) 26%, transparent);
+  border-top-color:var(--accent,#A855F7);
+  animation:heliosSpin .8s linear infinite;
+}
+@media (prefers-reduced-motion:reduce){ .boot-splash__spin{animation:none} }

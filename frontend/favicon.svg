@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Vertex CRM">
+  <title>Vertex CRM</title>
+  <!--
+    Mesma geometria de assets/gerar_icone.py (o ícone do VertexCRM.exe):
+    hexágono de raio 0.30 do lado, dividido em três faces a partir do centro.
+      topo    #C884FC   esquerda #A855F7   direita #6D28D9   arestas #E9D5FF
+    Em SVG em vez de PNG para ficar nítido em tela retina e no favicon de 16px.
+  -->
+  <rect x="1.28" y="1.28" width="61.44" height="61.44" rx="15.04"
+        fill="#12101E" stroke="#A855F7" stroke-opacity="0.353" stroke-width="0.768"/>
+
+  <!-- face de cima -->
+  <path d="M15.37 22.4 L32 12.8 L48.63 22.4 L32 32 Z" fill="#C884FC"/>
+  <!-- face esquerda -->
+  <path d="M15.37 22.4 L32 32 L32 51.2 L15.37 41.6 Z" fill="#A855F7"/>
+  <!-- face direita -->
+  <path d="M48.63 22.4 L48.63 41.6 L32 51.2 L32 32 Z" fill="#6D28D9"/>
+
+  <!-- arestas: contorno externo + as três que saem do centro -->
+  <g fill="none" stroke="#E9D5FF" stroke-opacity="0.92" stroke-width="1.15"
+     stroke-linejoin="round" stroke-linecap="round">
+    <path d="M32 12.8 L48.63 22.4 L48.63 41.6 L32 51.2 L15.37 41.6 L15.37 22.4 Z"/>
+    <path d="M15.37 22.4 L32 32"/>
+    <path d="M48.63 22.4 L32 32"/>
+    <path d="M32 51.2 L32 32"/>
+  </g>
+</svg>

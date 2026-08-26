@@ -1,0 +1,22 @@
+[Unit]
+Description=Alerta de falha do Vertex CRM (unidade: %i)
+# Sem After/Requires do alvo: este serviço tem que subir JUSTAMENTE quando o
+# outro falhou. Ele é o destino de OnFailure=, não um dependente.
+
+[Service]
+Type=oneshot
+# %i é a unidade que falhou (ex.: vertex-backup.service), passada pelo OnFailure.
+ExecStart=/opt/vertex-crm/.venv/bin/python /usr/local/bin/vertex-alert %i
+
+# Precisa: ler /etc/vertex-crm/.env (SMTP), falar com a rede (SMTP) e escrever
+# o log persistente em /var/lib/vertex-crm/alertas.log. Nada além disso.
+User=root
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/var/lib/vertex-crm
+# /etc fica somente-leitura por ProtectSystem=strict -- o .env só é LIDO, ok.
+
+# Rede é necessária para o SMTP; um alerta que trava não serve de nada.
+TimeoutStartSec=90

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vertex CRM — abra pelo servidor</title>
+<link rel="icon" href="frontend/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="frontend/favicon.ico" sizes="16x16 32x32 48x48">
+<style>
+  :root{--bg:#0A0710;--card:rgba(255,255,255,.04);--line:rgba(255,255,255,.09);
+        --txt:#EDE9FE;--txt2:#A79FBF;--accent:#A855F7;--accent2:#E879F9}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{min-height:100vh;display:grid;place-items:center;padding:24px;background:var(--bg);
+       color:var(--txt);font:400 16px/1.6 -apple-system,"Segoe UI",system-ui,sans-serif;
+       position:relative;overflow-x:hidden}
+  body::before{content:'';position:fixed;inset:-20%;z-index:0;pointer-events:none;
+       background:radial-gradient(40% 34% at 22% 18%,rgba(168,85,247,.30),transparent 70%),
+                  radial-gradient(38% 32% at 80% 82%,rgba(232,121,249,.22),transparent 72%);
+       filter:blur(30px)}
+  .card{position:relative;z-index:1;width:100%;max-width:620px;background:var(--card);
+        border:1px solid var(--line);border-radius:24px;padding:40px;
+        backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);
+        box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 30px 60px -20px rgba(0,0,0,.7)}
+  h1{font-size:1.55rem;font-weight:600;letter-spacing:-.03em;margin-bottom:10px}
+  .tag{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.1em;
+       text-transform:uppercase;color:var(--accent2);border:1px solid rgba(232,121,249,.3);
+       background:rgba(232,121,249,.08);padding:5px 12px;border-radius:999px;margin-bottom:18px}
+  p{color:var(--txt2);margin-bottom:18px}
+  code,pre{font-family:ui-monospace,"Cascadia Code",Consolas,monospace}
+  pre{background:rgba(0,0,0,.45);border:1px solid var(--line);border-radius:14px;
+      padding:16px 18px;font-size:.86rem;color:#D8CFF0;overflow-x:auto;margin-bottom:22px}
+  a.go{display:inline-block;background:linear-gradient(135deg,var(--accent),#7E22CE);
+       color:#fff;text-decoration:none;font-weight:600;padding:13px 26px;border-radius:999px;
+       box-shadow:0 10px 26px -8px rgba(168,85,247,.75);transition:transform .2s cubic-bezier(.34,1.42,.64,1)}
+  a.go:hover{transform:translateY(-2px)}
+  .note{margin-top:24px;padding-top:20px;border-top:1px solid var(--line);
+        font-size:.86rem;color:#8C84A3}
+  .note b{color:var(--txt2);font-weight:600}
+</style>
+</head>
+<body>
+  <main class="card">
+    <span class="tag">Vertex CRM</span>
+    <h1>Este arquivo não é mais o aplicativo</h1>
+    <p>O CRM agora tem backend próprio: os leads ficam salvos por usuário, o login tem senha
+       e os gráficos leem dados reais. Por isso ele precisa do servidor — abrir um arquivo
+       solto pelo <code>file://</code> não funciona.</p>
+    <p>No PowerShell, dentro da pasta <code>Dashboard</code>:</p>
+    <pre>python iniciar.py</pre>
+    <p>Depois abra:</p>
+    <a class="go" href="http://127.0.0.1:8000">Abrir http://127.0.0.1:8000</a>
+    <div class="note">
+      <p style="margin:0">A versão antiga do painel continua guardada em
+        <code>_backup_index.html</code>.</p>
+    </div>
+  </main>
+</body>
+</html>

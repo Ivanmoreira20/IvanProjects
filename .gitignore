@@ -1,0 +1,54 @@
+.venv/
+__pycache__/
+*.db
+*.pyc
+
+# Artefatos do SQLite em modo WAL
+*.db-wal
+*.db-shm
+.pytest_cache/
+
+# Empacotamento (PyInstaller). O VertexCRM.spec e escrito a mao e VAI para o
+# repositorio; o que o PyInstaller gera sozinho, nao.
+build/
+dist/
+*.spec
+!VertexCRM.spec
+erro.log
+
+# Segredos: credenciais do Google e senha de app do SMTP.
+# `.env.example` (sem segredo) continua versionado -- ver a excecao abaixo.
+.env
+.env.*
+!.env.example
+
+# Arquivo de chaves do dono: token do Mercado Pago, segredo do webhook, chave
+# do Gemini e senha do VPS. JAMAIS pode ir para o repositorio (nem privado --
+# fica no historico para sempre). Padroes defensivos para qualquer chave/segredo.
+PUBLIC TEST KEY.txt
+*[Kk]ey*.txt
+*[Ss]ecret*.txt
+cred.txt
+*.pem
+id_rsa
+id_ed25519
+*.key
+
+# Vercel. `.vercel/` guarda o vinculo local com o projeto na nuvem (project id
+# e org id) -- e por conta da maquina, nao do repositorio.
+# `vercel.json`, `.vercelignore`, `api/` e o `requirements.txt` da raiz VAO
+# para o repositorio: sao eles que descrevem o deploy.
+.vercel/
+node_modules/
+
+# Backups/snapshots de banco -- contem dados reais, NUNCA versionar
+*.db-*
+*.db.*
+vertex.db*
+
+# Cruft local que nao pertence ao repositorio
+_backup_index.html
+/Lading Page/
+/Nova pasta/
+deploy/capturas-antigas/
+*.thumbnail

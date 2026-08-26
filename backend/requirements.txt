@@ -1,0 +1,25 @@
+# Dependencias de producao do Vertex CRM.
+#
+# O banco e o `sqlite3` da propria biblioteca padrao -- nada a instalar. Leitura
+# do .env, envio de e-mail, PKCE e hash de codigo usam so a stdlib: smtplib,
+# ssl, email, hashlib, hmac, secrets, threading.
+
+fastapi
+uvicorn[standard]
+
+# `httpx` NAO e opcional: alem de ser o transporte do TestClient do FastAPI, e
+# ele que faz as chamadas ao Google em `oauth.py`, ao Mercado Pago e ao Gemini.
+# Por isso NAO existe `requests` nesta lista.
+httpx
+
+# Pillow: processa a foto de perfil (`avatars.py`). Ela e RE-CODIFICADA no
+# servidor -- e' isso que garante que o que sai do disco e' uma imagem WebP de
+# verdade, e nao um arquivo que so' parecia uma. Sem esta linha, um servidor
+# reconstruido a partir deste arquivo sobe normalmente e so' quebra quando o
+# primeiro cliente tenta trocar a foto. O import e' tardio de proposito, entao
+# a falta dela nao derruba o aplicativo -- mas derruba a funcionalidade.
+pillow
+
+# Testes. Fica aqui, e nao num arquivo separado, porque a suite de seguranca e'
+# parte do criterio de deploy deste projeto -- nao um extra de desenvolvimento.
+pytest

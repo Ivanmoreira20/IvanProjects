@@ -1,0 +1,26 @@
+[Unit]
+Description=Backup do Vertex CRM (banco + fotos de perfil)
+After=network.target
+# Se o backup falhar, avisa o dono (e-mail + log persistente). A falha de
+# 20-22/08/2026 passou TRÊS dias despercebida justamente por não ter isto.
+OnFailure=vertex-alert@%n.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/vertex-backup
+# Endurecimento: o backup lê o banco e escreve só nas duas pastas de dados.
+# Se este script for comprometido, ele não alcança o resto do sistema
+# (ProtectSystem=strict deixa todo o resto do disco somente-leitura).
+#
+# Por que /var/lib/vertex-crm precisa ser ReadWrite e não ReadOnly:
+# o banco roda em modo WAL. Abrir um banco WAL -- mesmo com mode=ro -- exige
+# anexar/criar o arquivo de memória compartilhada (-shm) NO diretório do banco.
+# Com ReadOnlyPaths ali, o SQLite falha com "unable to open database file" e o
+# backup agendado nunca roda (só rodava à mão, como root sem sandbox). A conexão
+# de origem continua mode=ro: o script não escreve no banco, só precisa do -shm.
+User=root
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/var/backups/vertex-crm /var/lib/vertex-crm

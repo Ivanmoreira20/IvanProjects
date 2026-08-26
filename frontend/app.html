@@ -1,0 +1,2094 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0A0710">
+<meta name="description" content="Vertex CRM. Painel de gestão de leads, negócios e receita.">
+<title>Vertex CRM</title>
+
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="icon" href="/favicon.svg?v=e02621e8e6" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico?v=49db5a4f98" sizes="16x16 32x32 48x48">
+<link rel="stylesheet" href="/css/style.css?v=f0dda0401a">
+<link rel="stylesheet" href="/css/fase2.css?v=604f34ae6f">
+<link rel="stylesheet" href="/css/fase3.css?v=a60906a184">
+<link rel="stylesheet" href="/css/fase4.css?v=1c84eea65c">
+<link rel="stylesheet" href="/css/animations.css?v=c16d5d99c5">
+
+<script src="/js/decoy.js?v=79adba6bc9"></script>
+<script type="module" src="/js/main.js?v=b1fad70752"></script>
+</head>
+<body>
+
+<svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0"><defs>
+  <symbol id="i-mark" viewBox="0 0 24 24"><path d="M12 2.6 20.5 7.3v9.4L12 21.4 3.5 16.7V7.3z"/><path d="M12 12.2 20.5 7.3M12 12.2 3.5 7.3M12 12.2v9.2"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 20v-1.6a4 4 0 0 0-4-4H6.5a4 4 0 0 0-4 4V20"/><circle cx="9.2" cy="7.4" r="3.4"/><path d="M21.5 20v-1.6a4 4 0 0 0-3-3.9M16.4 4.2a4 4 0 0 1 0 6.4"/></symbol>
+  <symbol id="i-columns" viewBox="0 0 24 24"><path d="M4 4h4.4v16H4zM9.8 4h4.4v10.5H9.8zM15.6 4H20v13.2h-4.4z"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 4v15.2a.8.8 0 0 0 .8.8H20"/><path d="M7.6 15.4 11 11l3 2.6 4.2-5.6"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.1"/><path d="M19.2 14.4a1.4 1.4 0 0 0 .3 1.6l.1.1a1.7 1.7 0 1 1-2.4 2.4l-.1-.1a1.4 1.4 0 0 0-2.4 1v.2a1.7 1.7 0 1 1-3.4 0v-.1a1.4 1.4 0 0 0-2.4-1l-.1.1a1.7 1.7 0 1 1-2.4-2.4l.1-.1a1.4 1.4 0 0 0-1-2.4H5a1.7 1.7 0 1 1 0-3.4h.1a1.4 1.4 0 0 0 1-2.4l-.1-.1a1.7 1.7 0 1 1 2.4-2.4l.1.1a1.4 1.4 0 0 0 1.6.3h.1a1.4 1.4 0 0 0 .9-1.3V5a1.7 1.7 0 1 1 3.4 0v.1a1.4 1.4 0 0 0 2.4 1l.1-.1a1.7 1.7 0 1 1 2.4 2.4l-.1.1a1.4 1.4 0 0 0-.3 1.6v.1a1.4 1.4 0 0 0 1.3.9h.2a1.7 1.7 0 1 1 0 3.4h-.1a1.4 1.4 0 0 0-1.3.9z"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m20 20-4.6-4.6"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5.2v13.6M5.2 12h13.6"/></symbol>
+  <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M14.9 4.9a2 2 0 0 1 2.9 0l1.3 1.3a2 2 0 0 1 0 2.9L8.4 20 4 21l1-4.4z"/><path d="m13.4 6.4 4.2 4.2"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4.6 6.6h14.8M9.4 6.6V5.2a1.4 1.4 0 0 1 1.4-1.4h2.4a1.4 1.4 0 0 1 1.4 1.4v1.4"/><path d="M17.6 6.6v12.6a1.6 1.6 0 0 1-1.6 1.6H8a1.6 1.6 0 0 1-1.6-1.6V6.6"/><path d="M10.4 10.6v6M13.6 10.6v6"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3.8v11.4"/><path d="m7.6 10.8 4.4 4.4 4.4-4.4"/><path d="M4.4 18.2v1a1.6 1.6 0 0 0 1.6 1.6h12a1.6 1.6 0 0 0 1.6-1.6v-1"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.4 12S6 5.6 12 5.6 21.6 12 21.6 12 18 18.4 12 18.4 2.4 12 2.4 12"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="M9.6 6a8.6 8.6 0 0 1 2.4-.4c6 0 9.6 6.4 9.6 6.4a16 16 0 0 1-2.8 3.6M6.3 7.9A16 16 0 0 0 2.4 12S6 18.4 12 18.4a8.7 8.7 0 0 0 3.6-.8"/><path d="M10 10a2.9 2.9 0 0 0 4 4"/><path d="m3.6 3.6 16.8 16.8"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.6 4.6 4.6L19 6.8"/></symbol>
+  <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6.8 9.6 5.2 5.2 5.2-5.2"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.6v2M12 19.4v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2.6 12h2M19.4 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.4 13.6A8.4 8.4 0 1 1 10.4 3.6a6.6 6.6 0 0 0 10 10"/></symbol>
+  <symbol id="i-logout" viewBox="0 0 24 24"><path d="M9.4 20.2H5.8a1.8 1.8 0 0 1-1.8-1.8V5.6a1.8 1.8 0 0 1 1.8-1.8h3.6"/><path d="m15.4 16.4 4.6-4.4-4.6-4.4M20 12H9.4"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><path d="M12 16.2v-4.6M12 8.2h.01"/></symbol>
+  <symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><path d="m8.4 12.2 2.5 2.5 4.7-5"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><path d="M12 7.6v5M12 16.2h.01"/></symbol>
+  <symbol id="i-inbox" viewBox="0 0 24 24"><path d="M20.4 13.6h-4.6l-1.4 2.4H9.6l-1.4-2.4H3.6"/><path d="M6.9 5.1 3.6 13.6v4.2a1.6 1.6 0 0 0 1.6 1.6h13.6a1.6 1.6 0 0 0 1.6-1.6v-4.2L17.1 5.1a1.6 1.6 0 0 0-1.5-1H8.4a1.6 1.6 0 0 0-1.5 1"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20.4 11.4a8.4 8.4 0 1 0-.7 4.4"/><path d="M20.6 5.6v5.8h-5.8"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><path d="M12 6.8V12l3.4 2"/></symbol>
+  <symbol id="i-fire" viewBox="0 0 24 24"><path d="M12 2.8s1 3.2-1.4 5.6c-2.4 2.4-4 4-4 6.8a5.4 5.4 0 0 0 10.8 0c0-1.6-.6-2.8-1.4-3.8 0 1.4-1 2.2-1.8 2.2 1-3-2.2-5.6-2.2-10.8"/></symbol>
+  <symbol id="i-pie" viewBox="0 0 24 24"><path d="M12 3.4v8.6l6.1 6.1"/><circle cx="12" cy="12" r="8.6"/></symbol>
+  <symbol id="i-arrow-ur" viewBox="0 0 24 24"><path d="M8 16 16 8M9.2 8H16v6.8"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.4"/><circle cx="12" cy="12" r="4.6"/><circle cx="12" cy="12" r=".9"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2.8 4.8 5.6v5.2c0 4.6 3 8.2 7.2 9.6 4.2-1.4 7.2-5 7.2-9.6V5.6z"/><path d="m8.8 12 2.2 2.2 4.2-4.4"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><path d="M4.4 20.4V5.2a1.4 1.4 0 0 1 1.4-1.4h7a1.4 1.4 0 0 1 1.4 1.4v15.2M14.2 9.6h4a1.4 1.4 0 0 1 1.4 1.4v9.4M3 20.4h18M7.6 7.6h3M7.6 11.4h3M7.6 15.2h3"/></symbol>
+  <symbol id="i-team" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M2.8 20v-1.2A4 4 0 0 1 6.8 15h4.4a4 4 0 0 1 4 3.8V20"/><path d="M16.4 5.2a3.2 3.2 0 0 1 0 6M18 15a4 4 0 0 1 3.2 3.8V20"/></symbol>
+  <symbol id="i-user-plus" viewBox="0 0 24 24"><circle cx="9.5" cy="7.6" r="3.4"/><path d="M3.4 20v-1.4a4 4 0 0 1 4-4h4.2a4 4 0 0 1 2 .5"/><path d="M18.6 8.6v5.2M21.2 11.2H16"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M19.4 8.2V6.6A1.6 1.6 0 0 0 17.8 5H5.6A1.6 1.6 0 0 0 4 6.6v10.8A1.6 1.6 0 0 0 5.6 19h12.2a1.6 1.6 0 0 0 1.6-1.6v-1.6"/><path d="M20.6 8.2h-4.2a1.9 1.9 0 0 0 0 3.8h4.2z"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3.2 13.9 9l5.9 1.9-5.9 1.9L12 18.6l-1.9-5.8-5.9-1.9L10.1 9z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path d="M4.4 5.4h15.2a1.6 1.6 0 0 1 1.6 1.6v10a1.6 1.6 0 0 1-1.6 1.6H4.4a1.6 1.6 0 0 1-1.6-1.6V7a1.6 1.6 0 0 1 1.6-1.6"/><path d="m3 7.4 9 5.6 9-5.6"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M20 12H4.6"/><path d="m10.2 5.6-5.6 6.4 5.6 6.4"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3.2H7.4a1.8 1.8 0 0 0-1.8 1.8v14a1.8 1.8 0 0 0 1.8 1.8h9.2a1.8 1.8 0 0 0 1.8-1.8V7.6z"/><path d="M14 3.2v4.4h4.4"/><path d="M9 12.6h6M9 16.2h6"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13.4 2.4 4.6 13.6h6.2l-.8 8 8.8-11.2h-6.2z"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8.6a6 6 0 1 0-12 0c0 6.4-2.4 8.2-2.4 8.2h16.8S18 15 18 8.6"/><path d="M13.7 20.4a2 2 0 0 1-3.4 0"/></symbol>
+  <symbol id="i-whats" viewBox="0 0 24 24"><path d="M3.4 20.6 4.9 16a8.2 8.2 0 1 1 3.3 3.2z"/><path d="M9 9.2c0 3 2.4 5.4 5.4 5.4l.9-1.6-2-.9-.9.9a5 5 0 0 1-1.8-1.8l.9-.9-.9-2z"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><path d="M11.6 3.4H4.4a1 1 0 0 0-1 1v7.2a1 1 0 0 0 .3.7l8.4 8.4a1 1 0 0 0 1.4 0l7.2-7.2a1 1 0 0 0 0-1.4l-8.4-8.4a1 1 0 0 0-.7-.3"/><path d="M7.6 7.6h.01"/></symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 8h10M18 8h2M4 16h4M12 16h8"/><circle cx="16" cy="8" r="2.2"/><circle cx="10" cy="16" r="2.2"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10.4 13.6a3.8 3.8 0 0 0 5.7.4l2.3-2.3a3.8 3.8 0 0 0-5.4-5.4l-1.3 1.3"/><path d="M13.6 10.4a3.8 3.8 0 0 0-5.7-.4l-2.3 2.3a3.8 3.8 0 0 0 5.4 5.4l1.3-1.3"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M20.6 3.4 10.8 13.2M20.6 3.4l-6.2 17.2-3.6-7.4-7.4-3.6z"/></symbol>
+  <symbol id="i-note" viewBox="0 0 24 24"><path d="M5.4 4.4h13.2a1 1 0 0 1 1 1v9.4l-5 5H5.4a1 1 0 0 1-1-1V5.4a1 1 0 0 1 1-1"/><path d="M19.6 14.8h-4a1 1 0 0 0-1 1v4"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M20.6 16.9v2.6a1.7 1.7 0 0 1-1.9 1.7 17.4 17.4 0 0 1-7.6-2.7 17 17 0 0 1-5.3-5.3A17.4 17.4 0 0 1 3.1 5.5 1.7 1.7 0 0 1 4.8 3.6h2.6a1.7 1.7 0 0 1 1.7 1.5c.1.8.3 1.7.6 2.5a1.7 1.7 0 0 1-.4 1.8l-1.1 1.1a14 14 0 0 0 5.3 5.3l1.1-1.1a1.7 1.7 0 0 1 1.8-.4c.8.3 1.6.5 2.5.6a1.7 1.7 0 0 1 1.5 1.7"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M5.6 5h12.8a1.4 1.4 0 0 1 1.4 1.4v12.8a1.4 1.4 0 0 1-1.4 1.4H5.6a1.4 1.4 0 0 1-1.4-1.4V6.4A1.4 1.4 0 0 1 5.6 5"/><path d="M16 3v4M8 3v4M4.2 10.2h15.6"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4.6M5 4.6h9.4l.8 1.6h4.2v8.4h-5l-.8-1.6H5"/></symbol>
+  <symbol id="i-x-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><path d="m9.2 9.2 5.6 5.6M14.8 9.2l-5.6 5.6"/></symbol>
+  <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M7.4 4h9.2v5a4.6 4.6 0 1 1-9.2 0z"/><path d="M7.4 5.6H4.8v1.6a2.6 2.6 0 0 0 2.6 2.6M16.6 5.6h2.6v1.6a2.6 2.6 0 0 1-2.6 2.6"/><path d="M12 13.6V17M8.6 20.4h6.8"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7.6 4.8 19 12 7.6 19.2z"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 4.6v14.8M15 4.6v14.8"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4.6 12H20"/><path d="m13.8 5.6 6.2 6.4-6.2 6.4"/></symbol>
+
+  <symbol id="i-google" viewBox="0 0 48 48">
+    <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+    <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+    <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+    <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+  </symbol>
+</defs></svg>
+
+<div class="grain" aria-hidden="true"></div>
+
+<div class="boot-splash" id="boot-splash" aria-hidden="true">
+  <span class="brand__mark boot-splash__mark"><svg class="ico" aria-hidden="true"><use href="#i-mark"></use></svg></span>
+  <span class="boot-splash__spin"></span>
+</div>
+
+<div class="auth is-hidden" id="auth-screen">
+  <div class="auth__scene" id="scene-login" aria-hidden="true"></div>
+
+  <a class="auth__back" href="/">
+    <svg class="ico" aria-hidden="true"><use href="#i-back"></use></svg>
+    <span>Voltar ao site</span>
+  </a>
+
+  <main class="auth__wrap">
+    <div class="bezel auth__card">
+      <div class="bezel__in auth__card-in">
+
+        <div class="auth__brand">
+          <span class="brand__mark"><svg class="ico" aria-hidden="true"><use href="#i-mark"></use></svg></span>
+          <span class="brand__name">Vertex <em>CRM</em></span>
+        </div>
+        <h1 class="auth__title" id="auth-title">Seu pipeline, com clareza.</h1>
+        <p class="auth__sub" id="auth-sub">Entre para acompanhar leads, negócios e receita em tempo real.</p>
+
+        <div class="auth__entry" id="recuperar-entry" hidden>
+          <form id="recuperar-form" novalidate>
+            <p class="auth__sub">Informe o e-mail da conta. Se ele estiver cadastrado, enviamos um código para redefinir a senha.</p>
+            <p class="formerr" id="recuperar-erro" role="alert" hidden></p>
+            <div class="field">
+              <label for="recuperar-email">E-mail</label>
+              <input type="email" id="recuperar-email" autocomplete="email" required placeholder="voce@empresa.com">
+            </div>
+            <button type="submit" class="btn btn--primary btn--block" id="recuperar-submit">
+              <span class="btn__txt">Enviar código</span>
+            </button>
+            <p class="auth__esqueci"><button type="button" class="linkbtn" data-voltar-login>Voltar para o login</button></p>
+          </form>
+
+          <form id="redefinir-form" novalidate hidden>
+            <p class="auth__sub">Digite o código que enviamos para <strong id="redefinir-destino">seu e-mail</strong> e escolha a senha nova.</p>
+            <p class="formerr" id="redefinir-erro" role="alert" hidden></p>
+            <div class="field">
+              <label for="redefinir-codigo">Código</label>
+              <input type="text" id="redefinir-codigo" inputmode="numeric" maxlength="6"
+                     autocomplete="one-time-code" required placeholder="000000">
+            </div>
+            <div class="field">
+              <label for="redefinir-senha">Nova senha</label>
+              <input type="password" id="redefinir-senha" autocomplete="new-password" minlength="8" required>
+              <small class="field__hint">Pelo menos 8 caracteres. Todas as sessões abertas serão encerradas.</small>
+            </div>
+            <button type="submit" class="btn btn--primary btn--block" id="redefinir-submit">
+              <span class="btn__txt">Redefinir senha</span>
+            </button>
+            <p class="auth__esqueci"><button type="button" class="linkbtn" data-voltar-login>Voltar para o login</button></p>
+          </form>
+        </div>
+
+        <div class="auth__entry" id="auth-entry">
+
+        <div class="oauth" id="oauth-block" hidden>
+          <button type="button" class="btn btn--google btn--block" id="google-btn">
+            <svg class="gmark" aria-hidden="true" focusable="false"><use href="#i-google"></use></svg>
+            <span>Entrar com Google</span>
+          </button>
+          <p class="orsep"><span>ou</span></p>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Autenticação">
+          <button type="button" class="tab is-active" id="tab-login" role="tab" aria-selected="true" aria-controls="panel-login">Entrar</button>
+          <button type="button" class="tab" id="tab-register" role="tab" aria-selected="false" aria-controls="panel-register">Criar conta</button>
+          <span class="tabs__pill" aria-hidden="true"></span>
+        </div>
+
+        <form class="auth__form" id="panel-login" role="tabpanel" aria-labelledby="tab-login" novalidate>
+          <p class="formerr" id="login-error" role="alert" aria-live="polite" hidden></p>
+
+          <div class="field">
+            <label for="login-email">E-mail</label>
+            <input type="email" id="login-email" name="email" autocomplete="email" required placeholder="voce@empresa.com">
+          </div>
+
+          <div class="field">
+            <label for="login-password">Senha</label>
+            <div class="field__pw">
+              <input type="password" id="login-password" name="password" autocomplete="current-password" required placeholder="Sua senha">
+              <button type="button" class="pw-toggle" data-pw-toggle="login-password" aria-label="Mostrar senha" aria-pressed="false">
+                <svg class="ico" aria-hidden="true"><use href="#i-eye"></use></svg>
+              </button>
+            </div>
+          </div>
+
+          <label class="check">
+            <input type="checkbox" id="login-remember" checked>
+            <span class="check__box" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg></span>
+            <span class="check__text">
+              <span class="check__label">Lembrar usuário</span>
+              <span class="check__hint">Se desmarcado, você precisará entrar novamente ao fechar o navegador.</span>
+            </span>
+          </label>
+
+          <p class="auth__esqueci">
+            <button type="button" class="linkbtn" id="esqueci-btn">Esqueci minha senha</button>
+          </p>
+          <button type="submit" class="btn btn--primary btn--block" id="login-submit">
+            <span>Entrar</span>
+            <span class="btn__orb" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-arrow-ur"></use></svg></span>
+          </button>
+        </form>
+
+        <form class="auth__form" id="panel-register" role="tabpanel" aria-labelledby="tab-register" novalidate hidden>
+          <p class="formerr" id="register-error" role="alert" aria-live="polite" hidden></p>
+
+          <div class="field">
+            <label for="reg-name">Nome completo</label>
+            <input type="text" id="reg-name" name="name" autocomplete="name" required placeholder="Ana Ribeiro">
+          </div>
+          <div class="field">
+            <label for="reg-email">E-mail</label>
+            <input type="email" id="reg-email" name="email" autocomplete="email" required placeholder="voce@empresa.com">
+          </div>
+          <div class="field">
+            <label for="reg-password">Senha</label>
+            <div class="field__pw">
+              <input type="password" id="reg-password" name="password" autocomplete="new-password" required minlength="8" placeholder="Mínimo de 8 caracteres">
+              <button type="button" class="pw-toggle" data-pw-toggle="reg-password" aria-label="Mostrar senha" aria-pressed="false">
+                <svg class="ico" aria-hidden="true"><use href="#i-eye"></use></svg>
+              </button>
+            </div>
+          </div>
+          <div class="field">
+            <label for="reg-password2">Confirmar senha</label>
+            <div class="field__pw">
+              <input type="password" id="reg-password2" name="password2" autocomplete="new-password" required placeholder="Repita a senha">
+              <button type="button" class="pw-toggle" data-pw-toggle="reg-password2" aria-label="Mostrar senha" aria-pressed="false">
+                <svg class="ico" aria-hidden="true"><use href="#i-eye"></use></svg>
+              </button>
+            </div>
+          </div>
+
+          <label class="check">
+            <input type="checkbox" id="reg-remember" checked>
+            <span class="check__box" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg></span>
+            <span class="check__text">
+              <span class="check__label">Lembrar usuário</span>
+              <span class="check__hint">Se desmarcado, você precisará entrar novamente ao fechar o navegador.</span>
+            </span>
+          </label>
+
+          <button type="submit" class="btn btn--primary btn--block" id="register-submit">
+            <span>Criar conta</span>
+            <span class="btn__orb" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-arrow-ur"></use></svg></span>
+          </button>
+        </form>
+
+        </div>
+
+        <section class="verify" id="panel-verify" aria-labelledby="verify-title" hidden>
+          <div class="verify__head">
+            <span class="verify__seal" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg></span>
+            <h2 class="verify__title" id="verify-title">Confirme seu e-mail</h2>
+          </div>
+          <p class="verify__lead">
+            Enviamos um código de 6 dígitos para <strong class="verify__mail" id="verify-email"></strong>.
+            Digite-o abaixo para ativar sua conta.
+          </p>
+
+          <p class="formerr" id="verify-error" role="alert" aria-live="polite" hidden></p>
+          <p class="formnote" id="verify-note" role="status" aria-live="polite" hidden></p>
+
+          <form id="verify-form" novalidate>
+            <div class="field">
+              <label for="verify-code">Código de verificação</label>
+              <input class="codefield" type="text" id="verify-code" name="code"
+                     inputmode="numeric" autocomplete="one-time-code" maxlength="6"
+                     pattern="[0-9]{6}" placeholder="000000" spellcheck="false"
+                     aria-describedby="verify-code-hint" required>
+              <small class="field__hint" id="verify-code-hint">Pode colar o código inteiro. Enviamos assim que os 6 dígitos estiverem completos.</small>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--block" id="verify-submit">
+              <span>Confirmar e entrar</span>
+              <span class="btn__orb" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-arrow-ur"></use></svg></span>
+            </button>
+          </form>
+
+          <div class="verify__acts">
+            <button type="button" class="btn btn--quiet btn--block" id="verify-resend">Reenviar código</button>
+            <button type="button" class="verify__back" id="verify-back">
+              <svg class="ico" aria-hidden="true"><use href="#i-back"></use></svg><span>Usar outro e-mail</span>
+            </button>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="app is-hidden" id="app-shell">
+  <div class="app__scene" id="scene-app" aria-hidden="true"></div>
+  <div class="scrim" id="nav-scrim" hidden></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__head">
+      <span class="brand__mark"><svg class="ico" aria-hidden="true"><use href="#i-mark"></use></svg></span>
+      <span class="brand__name">Vertex <em>CRM</em></span>
+      <button type="button" class="iconbtn sidebar__close" id="nav-close" aria-label="Fechar menu">
+        <svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg>
+      </button>
+    </div>
+
+    <nav class="nav" aria-label="Navegação principal">
+      <p class="nav__grupo">Operação</p>
+      <a class="nav__item" href="#/dashboard"  data-route="dashboard"><svg class="ico" aria-hidden="true"><use href="#i-grid"></use></svg><span>Dashboard</span></a>
+      <a class="nav__item" href="#/leads"      data-route="leads"><svg class="ico" aria-hidden="true"><use href="#i-users"></use></svg><span>Leads</span></a>
+      <a class="nav__item" href="#/negocios"   data-route="negocios"><svg class="ico" aria-hidden="true"><use href="#i-columns"></use></svg><span>Negócios</span></a>
+      <a class="nav__item" href="#/acompanhamento" data-route="acompanhamento"><svg class="ico" aria-hidden="true"><use href="#i-inbox"></use></svg><span>Acompanhamento</span><span class="nav__badge" id="nav-followup-badge" hidden>0</span></a>
+      <a class="nav__item" href="#/propostas"  data-route="propostas"><svg class="ico" aria-hidden="true"><use href="#i-doc"></use></svg><span>Propostas</span></a>
+
+      <p class="nav__grupo">Análise e automação</p>
+      <a class="nav__item" href="#/inteligencia" data-route="inteligencia"><svg class="ico" aria-hidden="true"><use href="#i-spark"></use></svg><span>Inteligência</span></a>
+      <a class="nav__item" href="#/relatorios" data-route="relatorios"><svg class="ico" aria-hidden="true"><use href="#i-chart"></use></svg><span>Relatórios</span></a>
+      <a class="nav__item" href="#/automacoes" data-route="automacoes"><svg class="ico" aria-hidden="true"><use href="#i-bolt"></use></svg><span>Automações</span></a>
+
+      <p class="nav__grupo nav__grupo--mkt">Marketing</p>
+      <a class="nav__item nav__item--mkt" href="#/marketing" data-route="marketing" hidden><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg><span>E-mail marketing</span></a>
+
+      <p class="nav__grupo nav__grupo--team">Equipe</p>
+      <a class="nav__item nav__item--team" href="#/equipe" data-route="equipe" hidden><svg class="ico" aria-hidden="true"><use href="#i-team"></use></svg><span>Equipe</span></a>
+
+      <p class="nav__grupo">Conta</p>
+      <a class="nav__item" href="#/cobranca"   data-route="cobranca"><svg class="ico" aria-hidden="true"><use href="#i-wallet"></use></svg><span>Plano e cobrança</span></a>
+      <a class="nav__item" href="#/config"     data-route="config"><svg class="ico" aria-hidden="true"><use href="#i-gear"></use></svg><span>Configurações</span></a>
+
+      <a class="nav__item nav__item--owner" href="#/admin" data-route="admin" hidden><svg class="ico" aria-hidden="true"><use href="#i-shield"></use></svg><span>Painel do dono</span></a>
+    </nav>
+
+    <div class="sidebar__foot">
+      <div class="bezel usercard">
+        <div class="bezel__in usercard__in">
+          <span class="avatar" id="side-avatar" aria-hidden="true">··</span>
+          <span class="usercard__txt">
+            <strong id="side-name">Carregando</strong>
+            <small id="side-email"></small>
+          </span>
+        </div>
+      </div>
+      <button type="button" class="btn btn--quiet btn--block" id="logout-btn">
+        <svg class="ico" aria-hidden="true"><use href="#i-logout"></use></svg><span>Sair da conta</span>
+      </button>
+    </div>
+  </aside>
+
+  <div class="app__main">
+    <header class="topbar">
+      <button type="button" class="iconbtn topbar__burger" id="nav-open" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">
+        <svg class="ico" aria-hidden="true"><use href="#i-menu"></use></svg>
+      </button>
+
+      <div class="searchbox" id="searchbox">
+        <svg class="ico searchbox__ico" aria-hidden="true"><use href="#i-search"></use></svg>
+        <label class="sr-only" for="global-search">Buscar em leads, propostas, histórico e campos personalizados</label>
+        <input type="search" id="global-search" placeholder="Buscar em tudo…" autocomplete="off"
+               role="combobox" aria-expanded="false" aria-controls="search-results" aria-autocomplete="list">
+        <button type="button" class="searchbox__clear" id="search-clear" aria-label="Limpar busca" hidden>
+          <svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg>
+        </button>
+        <kbd class="searchbox__kbd" aria-hidden="true">/</kbd>
+
+        <div class="results bezel" id="search-results" role="listbox" aria-label="Resultados da busca" hidden>
+          <div class="bezel__in results__in" id="search-results-in"></div>
+        </div>
+      </div>
+
+      <div class="topbar__actions">
+        <div class="bellwrap">
+          <button type="button" class="iconbtn bell" id="notif-btn" aria-label="Notificações"
+                  aria-expanded="false" aria-controls="notif-panel">
+            <svg class="ico" aria-hidden="true"><use href="#i-bell"></use></svg>
+            <span class="bell__dot" id="notif-count" hidden>0</span>
+          </button>
+          <div class="notifs bezel" id="notif-panel" hidden>
+            <div class="bezel__in notifs__in">
+              <div class="notifs__head">
+                <h2 class="notifs__title">Notificações</h2>
+                <button type="button" class="btn btn--quiet btn--xs" id="notif-readall">Marcar todas como lidas</button>
+              </div>
+              <div class="notifs__list" id="notif-list"></div>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="iconbtn" id="theme-btn" aria-label="Alternar tema claro e escuro">
+          <svg class="ico ico--sun" aria-hidden="true"><use href="#i-sun"></use></svg>
+          <svg class="ico ico--moon" aria-hidden="true"><use href="#i-moon"></use></svg>
+        </button>
+        <button type="button" class="btn btn--primary" data-open-lead>
+          <svg class="ico" aria-hidden="true"><use href="#i-plus"></use></svg><span class="btn__txt">Novo lead</span>
+        </button>
+        <a class="avatar avatar--btn" id="top-avatar" href="#/config" aria-label="Abrir configurações da conta">··</a>
+      </div>
+    </header>
+
+    <div class="avisop" id="aviso-plano" role="status" hidden></div>
+
+    <main class="content" id="content" tabindex="-1">
+
+      <section class="page" id="page-dashboard" aria-labelledby="t-dashboard">
+        <div class="page__head">
+          <div>
+            <h1 class="page__title" id="t-dashboard">Visão geral</h1>
+            <p class="page__sub" id="dash-sub">Acompanhe o desempenho do seu pipeline.</p>
+          </div>
+          <button type="button" class="btn btn--ghost" data-export-csv>
+            <svg class="ico" aria-hidden="true"><use href="#i-download"></use></svg><span class="btn__txt">Exportar CSV</span>
+          </button>
+        </div>
+
+        <section class="bezel pp" id="dash-primeiros" aria-label="Primeiros passos" hidden></section>
+
+        <div class="kpis" id="kpi-grid"></div>
+
+        <section class="bezel attn" id="dash-attn" aria-labelledby="attn-title" hidden>
+          <div class="bezel__in attn__in">
+            <div class="attn__head">
+              <span class="attn__seal" aria-hidden="true"><svg class="ico"><use href="#i-alert"></use></svg></span>
+              <div class="attn__headtxt">
+                <h2 class="attn__title" id="attn-title">Precisa da sua atenção</h2>
+                <p class="attn__sub" id="attn-sub"></p>
+              </div>
+              <a class="btn btn--ghost attn__all" href="#/acompanhamento">
+                <span class="btn__txt">Ver tudo</span>
+                <svg class="ico" aria-hidden="true"><use href="#i-arrow-ur"></use></svg>
+              </a>
+            </div>
+            <ul class="attn__list" id="attn-list"></ul>
+          </div>
+        </section>
+
+        <section class="bezel attn" id="dash-semacao" aria-labelledby="semacao-title" hidden>
+          <div class="bezel__in attn__in">
+            <div class="attn__head">
+              <span class="attn__seal" aria-hidden="true"><svg class="ico"><use href="#i-clock"></use></svg></span>
+              <div class="attn__headtxt">
+                <h2 class="attn__title" id="semacao-title">Negócios sem próxima ação</h2>
+                <p class="attn__sub" id="semacao-sub"></p>
+              </div>
+            </div>
+            <ul class="attn__list" id="semacao-list"></ul>
+          </div>
+        </section>
+
+        <div class="bento">
+          <div class="bezel bento__a">
+            <div class="bezel__in panel">
+              <div class="panel__head">
+                <h2 class="panel__title">Receita por mês</h2>
+                <span class="chip" id="revenue-chip">Todos os períodos</span>
+              </div>
+              <div class="chart" data-chart="revenue" id="chart-revenue"></div>
+            </div>
+          </div>
+
+          <div class="bezel bento__b">
+            <div class="bezel__in panel">
+              <div class="panel__head">
+                <h2 class="panel__title">Segmentos</h2>
+              </div>
+              <div class="chart chart--donut" data-chart="segments" id="chart-segments"></div>
+              <ul class="legend" id="segments-legend"></ul>
+            </div>
+          </div>
+
+          <div class="bezel bento__c">
+            <div class="bezel__in panel">
+              <div class="panel__head">
+                <h2 class="panel__title">Leads recentes</h2>
+                <a class="linkbtn" href="#/leads">Ver todos <svg class="ico" aria-hidden="true"><use href="#i-arrow-ur"></use></svg></a>
+              </div>
+              <div class="tablewrap">
+                <table class="table">
+                  <caption class="sr-only">Cinco leads mais recentes</caption>
+                  <thead><tr><th scope="col">Cliente</th><th scope="col">Empresa</th><th scope="col">Segmento</th><th scope="col" class="num">Valor</th><th scope="col">Status</th></tr></thead>
+                  <tbody id="dash-tbody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="page-leads" aria-labelledby="t-leads" hidden>
+        <div class="page__head">
+          <div>
+            <h1 class="page__title" id="t-leads">Leads</h1>
+            <p class="page__sub" id="leads-sub">Cadastre, edite e acompanhe cada oportunidade.</p>
+          </div>
+          <div class="page__acts">
+            <button type="button" class="btn btn--ghost" data-export-csv>
+              <svg class="ico" aria-hidden="true"><use href="#i-download"></use></svg><span class="btn__txt">Exportar CSV</span>
+            </button>
+            <button type="button" class="btn btn--ghost" data-open-import>
+              <svg class="ico" aria-hidden="true"><use href="#i-inbox"></use></svg><span class="btn__txt">Importar CSV</span>
+            </button>
+            <button type="button" class="btn btn--primary" data-open-lead>
+              <svg class="ico" aria-hidden="true"><use href="#i-plus"></use></svg><span class="btn__txt">Novo lead</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="bezel">
+          <div class="bezel__in panel">
+            <div class="tablewrap">
+              <table class="table">
+                <caption class="sr-only">Todos os leads cadastrados</caption>
+                <thead><tr>
+                  <th scope="col">Cliente</th><th scope="col">Empresa</th><th scope="col">Segmento</th>
+                  <th scope="col" class="num">Valor</th><th scope="col">Status</th><th scope="col" class="acts">Ações</th>
+                </tr></thead>
+                <tbody id="leads-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="page-negocios" aria-labelledby="t-negocios" hidden>
+        <div class="page__head">
+          <div>
+            <h1 class="page__title" id="t-negocios">Negócios</h1>
+            <p class="page__sub">Arraste um card para mudar o status, ou use o menu de cada card.</p>
+          </div>
+          <button type="button" class="btn btn--primary" data-open-lead>
+            <svg class="ico" aria-hidden="true"><use href="#i-plus"></use></svg><span class="btn__txt">Novo lead</span>
+          </button>
+        </div>
+        <div class="kanban" id="kanban"></div>
+      </section>
+
+      <section class="page" id="page-acompanhamento" aria-labelledby="t-acompanhamento" hidden>
+        <div class="page__head">
+          <div>
+            <h1 class="page__title" id="t-acompanhamento">Acompanhamento</h1>
+            <p class="page__sub">O que está parado no seu funil e precisa de uma ação hoje.</p>
+          </div>
+          <button type="button" class="btn btn--ghost" id="fup-refresh">
+            <svg class="ico" aria-hidden="true"><use href="#i-refresh"></use></svg><span class="btn__txt">Atualizar</span>
+          </button>
+        </div>
+
+        <div class="fupsum" id="fup-summary"></div>
+
+        <div class="bezel fupchart" id="fup-chart-wrap" hidden>
+          <div class="bezel__in panel">
+            <div class="panel__head">
+              <h2 class="panel__title">Valor parado por etapa</h2>
+              <span class="chip">Somente negócios em aberto</span>
+            </div>
+            <div class="chart" data-chart="followups" id="chart-followups"></div>
+          </div>
+        </div>
+
+        <div class="fupfilters" id="fup-filters" role="group" aria-label="Filtrar por urgência">
+          <button type="button" class="fupfilter is-active" data-sev="todas">Todas</button>
+          <button type="button" class="fupfilter" data-sev="alta">Urgente</button>
+          <button type="button" class="fupfilter" data-sev="media">Atenção</button>
+        </div>
+
+        <div id="fup-list"></div>
+      </section>
+
+      <section class="page" id="page-relatorios" aria-labelledby="t-relatorios" hidden>
+        <div class="page__head">
+          <div>
+            <h1 class="page__title" id="t-relatorios">Relatórios</h1>
+            <p class="page__sub">Números calculados a partir dos seus leads cadastrados.</p>
+          </div>
+          <button type="button" class="btn btn--ghost" data-export-csv>
+            <svg class="ico" aria-hidden="true"><use href="#i-download"></use></svg><span class="btn__txt">Exportar CSV</span>
+          </button>
+        </div>
+
+        <div class="bento bento--report">
+          <div class="bezel bento__a">
+            <div class="bezel__in panel">
+              <div class="panel__head"><h2 class="panel__title">Vendas mensais</h2></div>
+              <div class="chart" data-chart="monthly" id="chart-monthly"></div>
+            </div>
+          </div>
+          <div class="bezel bento__b">
+            <div class="bezel__in panel">
+              <div class="panel__head"><h2 class="panel__title">Funil por status</h2></div>
+              <div class="chart" data-chart="funnel" id="chart-funnel"></div>
+            </div>
+          </div>
+          <div class="bezel bento__c">
+            <div class="bezel__in panel">
+              <div class="panel__head"><h2 class="panel__title">Resumo por status</h2></div>
+              <div class="tablewrap">
+                <table class="table">
+                  <caption class="sr-only">Quantidade e valor por status</caption>
+                  <thead><tr><th scope="col">Status</th><th scope="col" class="num">Leads</th><th scope="col" class="num">Valor total</th><th scope="col" class="num">Participação</th></tr></thead>
+                  <tbody id="report-tbody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bezel">
+          <div class="bezel__in panel">
+            <div class="panel__head">
+              <h2 class="panel__title">Por que estamos perdendo</h2>
+              <span class="chip">Motivo informado ao marcar a perda</span>
+            </div>
+            <div id="loss-report"></div>
+          </div>
+        </div>
+
+        <div class="bezel">
+          <div class="bezel__in panel">
+            <div class="panel__head">
+              <h2 class="panel__title">Análise por período</h2>
+              <div class="segmented" role="group" aria-label="Período da análise">
+                <button type="button" class="segmented__b" data-periodo="30d">30 dias</button>
+                <button type="button" class="segmented__b is-on" data-periodo="90d">90 dias</button>
+                <button type="button" class="segmented__b" data-periodo="180d">6 meses</button>
+                <button type="button" class="segmented__b" data-periodo="365d">1 ano</button>
+              </div>
+            </div>
+            <div id="adv-report"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="page-inteligencia" aria-labelledby="t-intel" hidden>
+        <div class="page__head">
+          <div>
+            <h1 class="page__title" id="t-intel">Inteligência</h1>
+            <p class="page__sub">Prioridade, risco e previsão calculados a partir dos seus próprios negócios.</p>
+          </div>
+        </div>
+
+        <div class="bezel">
+          <div class="bezel__in panel">
+            <div class="panel__head">
+              <h2 class="panel__title">Previsão de vendas</h2>
+              <span class="chip" id="prev-origem">—</span>
+            </div>
+            <div id="prev-corpo"></div>
+          </div>
+        </div>
+
+        <div class="bento bento--intel">
+
+          <div class="bezel bento__a">
+            <div class="bezel__in panel">
+              <div class="panel__head">
+                <h2 class="panel__title">Onde investir o seu dia</h2>
+                <div class="segmented" role="group" aria-label="Filtrar por prioridade">
+                  <button type="button" class="segmented__b is-on" data-banda="">Todas</button>
+                  <button type="button" class="segmented__b" data-banda="alta">Alta</button>
+                  <button type="button" class="segmented__b" data-banda="media">Média</button>
+                  <button type="button" class="segmented__b" data-banda="baixa">Baixa</button>
+                </div>
+              </div>
+              <div id="intel-prioridades"></div>
+            </div>
+          </div>
+
+          <div class="bezel bento__b">
+            <div class="bezel__in panel">
+              <div class="panel__head">
+                <h2 class="panel__title">Negócios em risco</h2>
+                <span class="chip chip--warn" id="intel-risco-valor">—</span>
+              </div>
+              <div id="intel-riscos"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bezel">
+          <div class="bezel__in panel">
+            <div class="panel__head">
+              <h2 class="panel__title">Assistente</h2>
+              <span class="chip" id="ia-chip">—</span>
+            </div>
+            <div id="ia-corpo">
+              <p class="ia__aviso" id="ia-aviso"></p>
+              <div class="ia__log" id="ia-log" aria-live="polite"></div>
+              <div class="ia__atalhos" id="ia-atalhos"></div>
+              <form class="ia__form" id="ia-form">
+                <label class="sr-only" for="ia-pergunta">Pergunta para o assistente</label>
+                <input type="text" id="ia-pergunta" maxlength="1000" autocomplete="off"
+                       placeholder="Pergunte sobre o seu pipeline…">
+                <button type="submit" class="btn btn--primary" id="ia-enviar">
+                  <svg class="ico" aria-hidden="true"><use href="#i-send"></use></svg>
+                  <span class="btn__txt">Perguntar</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="bezel">
+          <div class="bezel__in panel">
+            <div class="panel__head">
+              <h2 class="panel__title">Primeiros passos</h2>
+              <span class="chip" id="ativ-chip">—</span>
+            </div>
+            <ul class="marcos" id="intel-ativacao"></ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="page-config" aria-labelledby="t-config" hidden>
+        <div class="page__head">
+          <div>
+            <h1 class="page__title" id="t-config">Configurações</h1>
+            <p class="page__sub">Perfil e preferências da sua conta.</p>
+          </div>
+        </div>
+
+        <div class="abas" role="tablist" aria-label="Seções das configurações">
+          <button type="button" class="abas__b is-on" role="tab" aria-selected="true" data-ir="perfil">Meu perfil</button>
+          <button type="button" class="abas__b" role="tab" aria-selected="false" data-ir="seguranca">Segurança</button>
+          <button type="button" class="abas__b" role="tab" aria-selected="false" data-ir="prefs">Preferências</button>
+          <button type="button" class="abas__b" role="tab" aria-selected="false" data-ir="integra">Integrações</button>
+          <button type="button" class="abas__b" role="tab" aria-selected="false" data-ir="dados">Dados e privacidade</button>
+        </div>
+
+        <div class="bento bento--config">
+          <div data-aba="perfil" class="bezel bento__a">
+            <div class="bezel__in panel">
+              <div class="panel__head"><h2 class="panel__title">Perfil</h2></div>
+
+              <div class="fotoperfil">
+                <span class="avatar avatar--xl" id="perfil-avatar" aria-hidden="true">··</span>
+                <div class="fotoperfil__acoes">
+                  <p class="fotoperfil__titulo">Foto de perfil</p>
+                  <p class="fotoperfil__dica">JPEG, PNG ou WebP, até 5 MB. Ela aparece para você e para a sua equipe.</p>
+                  <input type="file" id="perfil-foto-input" accept="image/jpeg,image/png,image/webp" class="sr-only">
+                  <div class="fotoperfil__btns">
+                    <button type="button" class="btn btn--ghost btn--sm" id="perfil-foto-btn">
+                      <svg class="ico" aria-hidden="true"><use href="#i-user-plus"></use></svg><span>Escolher foto</span>
+                    </button>
+                    <button type="button" class="btn btn--quiet btn--sm" id="perfil-foto-remover" hidden>Remover</button>
+                  </div>
+                  <p class="formerr" id="perfil-foto-erro" role="alert" hidden></p>
+                </div>
+              </div>
+
+              <form id="profile-form" novalidate>
+                <p class="formerr" id="profile-error" role="alert" hidden></p>
+                <div class="field">
+                  <label for="profile-name">Nome</label>
+                  <input type="text" id="profile-name" name="name" autocomplete="name" required>
+                </div>
+                <div class="field">
+                  <label for="profile-email">E-mail</label>
+                  <input type="email" id="profile-email" name="email" readonly aria-describedby="profile-email-hint">
+                  <small class="field__hint" id="profile-email-hint">
+                    É por ele que você entra e recupera a conta. Trocar exige a sua senha e a
+                    confirmação de um código enviado ao endereço novo.
+                  </small>
+                  <button type="button" class="linkbtn" id="email-trocar-btn">
+                    <svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg><span>Alterar e-mail</span>
+                  </button>
+                </div>
+                <button type="submit" class="btn btn--primary">
+                  <svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg><span>Salvar alterações</span>
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div data-aba="prefs" class="bezel bento__b">
+            <div class="bezel__in panel">
+              <div class="panel__head"><h2 class="panel__title">Aparência</h2></div>
+              <fieldset class="segmented">
+                <legend>Tema do sistema</legend>
+                <div class="segmented__row" role="radiogroup" aria-label="Tema do sistema">
+                  <label class="segmented__opt"><input type="radio" name="theme" value="dark"><span><svg class="ico" aria-hidden="true"><use href="#i-moon"></use></svg>Escuro</span></label>
+                  <label class="segmented__opt"><input type="radio" name="theme" value="light"><span><svg class="ico" aria-hidden="true"><use href="#i-sun"></use></svg>Claro</span></label>
+                </div>
+              </fieldset>
+              <p class="field__hint">A preferência fica salva neste navegador.</p>
+
+              <div class="pp__voltar" id="pp-voltar" hidden>
+                <div>
+                  <p class="field__label">Primeiros passos</p>
+                  <p class="field__hint">Você ocultou a trilha do Dashboard.</p>
+                </div>
+                <button type="button" class="btn btn--ghost" id="pp-voltar-btn">
+                  <span class="btn__txt">Mostrar de novo</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div data-aba="seguranca" class="bezel">
+          <div class="bezel__in panel">
+            <div class="panel__head"><h2 class="panel__title">Senha</h2></div>
+            <form id="senha-form" novalidate>
+              <p class="formerr" id="senha-erro" role="alert" hidden></p>
+              <p class="formok" id="senha-ok" role="status" hidden>Senha alterada. As outras sessões foram encerradas.</p>
+              <div class="field">
+                <label for="senha-atual">Senha atual</label>
+                <input type="password" id="senha-atual" autocomplete="current-password" required>
+              </div>
+              <div class="field">
+                <label for="senha-nova">Nova senha</label>
+                <input type="password" id="senha-nova" autocomplete="new-password" minlength="8" required
+                       aria-describedby="senha-dica">
+                <small class="field__hint" id="senha-dica">Pelo menos 8 caracteres. Trocar a senha encerra as sessões dos outros aparelhos.</small>
+              </div>
+              <button type="submit" class="btn btn--primary">
+                <svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg><span>Alterar senha</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div data-aba="seguranca" class="bezel">
+          <div class="bezel__in panel">
+            <div class="panel__head">
+              <h2 class="panel__title">Aparelhos conectados</h2>
+              <button type="button" class="btn btn--quiet btn--xs" id="sessoes-encerrar">Encerrar as outras</button>
+            </div>
+            <p class="panel__body panel__body--tight">Onde a sua conta está aberta agora. Não guardamos endereço de rede nem localização.</p>
+            <div id="sessoes-lista" class="sessoes"></div>
+          </div>
+        </div>
+
+        <div data-aba="seguranca" class="bezel bento__c">
+            <div class="bezel__in panel">
+              <div class="panel__head"><h2 class="panel__title">Sessão</h2></div>
+              <p class="panel__body" id="session-note">Você está conectado nesta conta.</p>
+              <button type="button" class="btn btn--danger" id="logout-btn-2">
+                <svg class="ico" aria-hidden="true"><use href="#i-logout"></use></svg><span>Sair da conta</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div data-aba="dados" class="bezel">
+          <div class="bezel__in panel">
+            <div class="panel__head">
+              <h2 class="panel__title">
+                <svg class="ico" aria-hidden="true"><use href="#i-doc"></use></svg> Privacidade e meus dados
+              </h2>
+              <span class="chip">LGPD</span>
+            </div>
+            <p class="panel__body">Você é o dono dos seus dados. Baixe uma cópia completa quando quiser, ou apague a conta de vez.</p>
+            <div class="lgpd-acts">
+              <button type="button" class="btn btn--ghost" id="lgpd-export">
+                <svg class="ico" aria-hidden="true"><use href="#i-download"></use></svg><span>Exportar meus dados (JSON)</span>
+              </button>
+            </div>
+            <div class="lgpd-danger">
+              <div class="lgpd-danger__txt">
+                <strong>Excluir minha conta</strong>
+                <p class="field__hint">Apaga para sempre a conta e todos os leads, propostas, atividades e histórico. Não dá para desfazer.</p>
+              </div>
+              <button type="button" class="btn btn--danger" id="lgpd-delete">
+                <svg class="ico" aria-hidden="true"><use href="#i-trash"></use></svg><span>Excluir conta</span>
+              </button>
+            </div>
+            <p class="formerr" id="lgpd-error" role="alert" hidden></p>
+          </div>
+        </div>
+
+        <div data-aba="prefs" class="bezel">
+          <div class="bezel__in panel">
+            <div class="panel__head">
+              <h2 class="panel__title">
+                <svg class="ico" aria-hidden="true"><use href="#i-flag"></use></svg> Motivos de perda
+              </h2>
+              <span class="chip">Obrigatórios ao marcar um negócio como perdido</span>
+            </div>
+            <p class="panel__body">
+              Renomear um motivo <strong>não</strong> reescreve os negócios já perdidos — eles guardam
+              o texto que valia no dia. Um motivo em uso não pode ser apagado, só desativado, senão
+              o relatório de perdas ficaria com buracos.
+            </p>
+            <form class="inlineform" id="loss-form" novalidate>
+              <p class="formerr" id="loss-error" role="alert" hidden></p>
+              <input type="text" id="loss-new" maxlength="60" placeholder="Novo motivo. Ex.: Prazo de entrega"
+                     aria-label="Novo motivo de perda">
+              <button type="submit" class="btn btn--primary btn--sm">
+                <svg class="ico" aria-hidden="true"><use href="#i-plus"></use></svg><span class="btn__txt">Adicionar</span>
+              </button>
+            </form>
+            <div id="loss-list"></div>
+          </div>
+        </div>
+
+        <div data-aba="prefs" class="bezel">
+          <div class="bezel__in panel">
+            <div class="panel__head">
+              <h2 class="panel__title">
+                <svg class="ico" aria-hidden="true"><use href="#i-sliders"></use></svg> Campos personalizados
+              </h2>
+              <button type="button" class="btn btn--quiet btn--xs" id="new-field-btn">Criar campo</button>
+            </div>
+            <p class="panel__body">
+              Guarde o que o seu processo exige sem esperar por uma nova versão do sistema.
+              Os campos aparecem no cadastro do lead, na página dele e na busca.
+              O <em>tipo</em> não muda depois de criado: um campo que já tem valor gravado não teria
+              como reinterpretar o que foi preenchido.
+            </p>
+            <div id="field-list"></div>
+          </div>
+        </div>
+
+        <div data-aba="integra" class="bezel">
+          <div class="bezel__in panel">
+            <div class="panel__head">
+              <h2 class="panel__title">
+                <svg class="ico" aria-hidden="true"><use href="#i-whats"></use></svg> WhatsApp Business
+              </h2>
+              <span class="statusdot" id="wa-state"><i></i><span>—</span></span>
+            </div>
+
+            <div class="wagrid">
+              <form id="wa-config-form" novalidate>
+                <p class="formerr" id="wa-config-error" role="alert" hidden></p>
+                <div class="field">
+                  <label for="wa-phone-id">ID do número (phone_number_id)</label>
+                  <input type="text" id="wa-phone-id" inputmode="numeric" maxlength="40"
+                         placeholder="1234567890" aria-describedby="wa-phone-hint">
+                  <small class="field__hint" id="wa-phone-hint">
+                    Está no painel da Meta, em WhatsApp → Configuração da API.
+                  </small>
+                </div>
+                <div class="field__row">
+                  <div class="field">
+                    <label for="wa-waba-id">ID da conta (WABA)</label>
+                    <input type="text" id="wa-waba-id" inputmode="numeric" maxlength="40" placeholder="Opcional">
+                  </div>
+                  <div class="field">
+                    <label for="wa-display">Número exibido</label>
+                    <input type="text" id="wa-display" maxlength="30" placeholder="+55 11 90000-0000">
+                  </div>
+                </div>
+                <div class="modal__acts modal__acts--left">
+                  <button type="submit" class="btn btn--primary btn--sm">
+                    <svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg><span>Salvar</span>
+                  </button>
+                  <button type="button" class="btn btn--ghost btn--sm" id="wa-check">
+                    <svg class="ico" aria-hidden="true"><use href="#i-refresh"></use></svg><span>Testar conexão</span>
+                  </button>
+                  <button type="button" class="btn btn--quiet btn--sm" id="wa-disconnect">Desconectar</button>
+                </div>
+              </form>
+
+              <div class="wanote" id="wa-note" hidden>
+                <h3>Onde fica o token <span class="ownertag">só você vê</span></h3>
+                <p>
+                  O token de acesso <strong>não</strong> é digitado aqui e <strong>não</strong> fica no banco
+                  de dados. Ele mora no arquivo <code>.env</code> do servidor, junto com a senha do e-mail —
+                  assim uma cópia do banco não carrega junto a permissão de mandar mensagem no seu nome.
+                </p>
+                <dl class="envlist">
+                  <dt><code>WHATSAPP_TOKEN</code></dt><dd>token de acesso permanente da Meta</dd>
+                  <dt><code>WHATSAPP_APP_SECRET</code></dt><dd>assina o webhook; sem ele, nada é recebido</dd>
+                  <dt><code>WHATSAPP_VERIFY_TOKEN</code></dt><dd>frase combinada no cadastro do webhook</dd>
+                </dl>
+                <p class="wanote__hook">
+                  URL do webhook: <code id="wa-webhook-url">—</code>
+                </p>
+              </div>
+
+              <div class="wanote" id="wa-note-cliente">
+                <h3>Você não precisa de token</h3>
+                <p>
+                  As credenciais do WhatsApp ficam <strong>no servidor do Vertex</strong> — nunca no seu
+                  navegador e nunca no banco de dados. Aqui você só informa o <strong>ID do número</strong>
+                  da sua conta na Meta, ao lado.
+                </p>
+                <p>
+                  É por isso que uma cópia do banco de dados não carrega junto a permissão de mandar
+                  mensagem no seu nome. Se o envio não estiver liberado para a sua conta, fale com o
+                  suporte.
+                </p>
+              </div>
+            </div>
+
+            <div class="watemplates">
+              <div class="panel__head">
+                <h3 class="panel__title panel__title--sm">Modelos de mensagem</h3>
+                <button type="button" class="btn btn--quiet btn--xs" id="new-template-btn">Novo modelo</button>
+              </div>
+              <p class="panel__body">
+                Fora da janela de 24 horas, a Meta só entrega mensagem por modelo aprovado.
+                Cadastre aqui o mesmo nome que você aprovou no painel dela.
+              </p>
+              <div id="template-list"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="page-marketing" aria-labelledby="t-marketing" hidden>
+        <div class="page__head">
+          <div>
+            <h1 class="page__title" id="t-marketing">
+              <svg class="ico ico--title" aria-hidden="true"><use href="#i-mail"></use></svg> E-mail marketing
+            </h1>
+            <p class="page__sub">Campanhas para os clientes que deram consentimento. Todo envio inclui link de descadastro; quem sai não recebe mais.</p>
+          </div>
+        </div>
+
+        <div class="bezel">
+          <div class="bezel__in panel">
+            <div class="panel__head"><h2 class="panel__title">Nova campanha</h2></div>
+            <div class="mkt-form">
+              <input type="text" id="mkt-nome" placeholder="Nome interno (só você vê)" autocomplete="off" maxlength="140">
+              <input type="text" id="mkt-assunto" placeholder="Assunto que o cliente verá" autocomplete="off" maxlength="200">
+              <textarea id="mkt-corpo" rows="5" placeholder="Escreva o e-mail. Você pode usar {{nome}} e {{empresa}}."></textarea>
+              <button type="button" class="btn btn--primary" id="mkt-criar">Criar campanha</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="bezel">
+          <div class="bezel__in panel">
+            <div class="panel__head"><h2 class="panel__title">Campanhas</h2></div>
+            <div id="mkt-campanhas"></div>
+          </div>
+        </div>
+
+        <div class="bezel">
+          <div class="bezel__in panel">
+            <div class="panel__head">
+              <h2 class="panel__title">Contatos</h2>
+              <span class="chip" id="mkt-contatos-chip">—</span>
+            </div>
+            <div id="mkt-contatos"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="page-equipe" aria-labelledby="t-equipe" hidden>
+        <div class="page__head">
+          <div>
+            <h1 class="page__title" id="t-equipe">
+              <svg class="ico ico--title" aria-hidden="true"><use href="#i-team"></use></svg> Equipe
+            </h1>
+            <p class="page__sub" id="equipe-sub">Convide pessoas e defina o que cada uma pode ver e fazer.</p>
+          </div>
+        </div>
+
+        <div class="bento bento--equipe">
+
+          <div class="bezel bento__a">
+            <div class="bezel__in panel">
+              <div class="panel__head">
+                <h2 class="panel__title">Convidar pessoa</h2>
+              </div>
+              <p class="panel__body">Escolha o papel, gere o link e envie para a pessoa (WhatsApp, e-mail, como preferir). O link vale por 7 dias e serve para uma pessoa.</p>
+              <form class="inlineform" id="invite-form" novalidate>
+                <div id="invite-role-mount" class="inlineform__select"></div>
+                <button type="submit" class="btn btn--primary btn--sm" id="invite-generate">
+                  <svg class="ico" aria-hidden="true"><use href="#i-user-plus"></use></svg><span class="btn__txt">Gerar convite</span>
+                </button>
+              </form>
+              <p class="formerr" id="invite-error" role="alert" hidden></p>
+
+              <div class="invite-fresh" id="invite-fresh" hidden>
+                <label for="invite-link">Link do convite (copie agora — não aparece de novo)</label>
+                <div class="copyrow">
+                  <input type="text" id="invite-link" readonly>
+                  <button type="button" class="btn btn--ghost btn--sm" id="invite-copy">
+                    <svg class="ico" aria-hidden="true"><use href="#i-link"></use></svg><span class="btn__txt">Copiar</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="watemplates">
+                <h3 class="panel__title panel__title--sm">Convites pendentes</h3>
+                <div id="invite-list"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bezel bento__b">
+            <div class="bezel__in panel">
+              <div class="panel__head">
+                <h2 class="panel__title">Membros</h2>
+                <span class="chip" id="equipe-count">—</span>
+              </div>
+              <div id="member-list"></div>
+            </div>
+          </div>
+
+          <div class="bezel bento__c">
+            <div class="bezel__in panel">
+              <div class="panel__head">
+                <h2 class="panel__title">
+                  <svg class="ico" aria-hidden="true"><use href="#i-shield"></use></svg> Atividade recente
+                </h2>
+              </div>
+              <p class="panel__body panel__body--tight">Quem convidou, mudou papéis, removeu alguém ou distribuiu leads — os últimos movimentos da equipe.</p>
+              <div id="audit-list" class="auditlog"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="page-admin" aria-labelledby="t-admin" hidden>
+        <div class="page__head">
+          <div>
+            <h1 class="page__title" id="t-admin">
+              <svg class="ico ico--title" aria-hidden="true"><use href="#i-shield"></use></svg> Painel do dono
+            </h1>
+            <p class="page__sub">Visão de toda a plataforma: contas, assinaturas, receita e uso. Só você vê esta página.</p>
+          </div>
+          <button type="button" class="btn btn--ghost" id="admin-refresh">
+            <svg class="ico" aria-hidden="true"><use href="#i-refresh"></use></svg><span class="btn__txt">Atualizar</span>
+          </button>
+        </div>
+
+        <div id="admin-saude"></div>
+
+        <div class="kpis" id="admin-kpis"></div>
+
+        <div class="bento bento--admin">
+          <div class="bezel bento__a">
+            <div class="bezel__in panel">
+              <div class="panel__head">
+                <h2 class="panel__title">Receita por mês</h2>
+                <span class="chip" id="admin-rev-chip">Faturas pagas</span>
+              </div>
+              <div id="admin-revenue"></div>
+            </div>
+          </div>
+          <div class="bezel bento__b">
+            <div class="bezel__in panel">
+              <div class="panel__head">
+                <h2 class="panel__title">Contas por status</h2>
+              </div>
+              <div id="admin-status"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bezel">
+          <div class="bezel__in panel">
+            <div class="panel__head">
+              <h2 class="panel__title">Contas</h2>
+              <div class="admin-search">
+                <svg class="ico" aria-hidden="true"><use href="#i-search"></use></svg>
+                <label class="sr-only" for="admin-q">Buscar contas por nome ou e-mail</label>
+                <input type="search" id="admin-q" placeholder="Buscar por nome ou e-mail…" autocomplete="off">
+              </div>
+            </div>
+            <div class="tablewrap">
+              <table class="table admin-table">
+                <caption class="sr-only">Todas as contas da plataforma</caption>
+                <thead><tr>
+                  <th scope="col">Conta</th>
+                  <th scope="col">Plano</th>
+                  <th scope="col" class="num">Leads</th>
+                  <th scope="col" class="num">Pipeline</th>
+                  <th scope="col">Última atividade</th>
+                  <th scope="col" class="acts">Detalhe</th>
+                </tr></thead>
+                <tbody id="admin-accounts"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="bezel">
+          <div class="bezel__in panel">
+            <div class="panel__head">
+              <h2 class="panel__title">Pedidos de plano</h2>
+              <span class="chip" id="admin-interests-chip">—</span>
+            </div>
+            <p class="panel__body">Quem clicou em “Quero o Pro/Empresa”. É o funil de vendas do próprio Vertex.</p>
+            <div id="admin-interests"></div>
+          </div>
+        </div>
+
+        <div class="bezel">
+          <div class="bezel__in panel">
+            <div class="panel__head">
+              <h2 class="panel__title">
+                <svg class="ico ico--title" aria-hidden="true"><use href="#i-shield"></use></svg> Alertas de segurança
+              </h2>
+              <span class="chip" id="admin-sec-chip">—</span>
+            </div>
+            <p class="panel__body">Iscas acionadas: caminhos e chaves falsas que só quem estava fuçando o sistema encontra. Quem cai nelas recebe dado falso e fica registrado aqui. Nenhuma linha é o esperado.</p>
+            <div id="admin-security"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page page--lead" id="page-lead" aria-labelledby="lead-title" hidden>
+        <a class="backlink" href="#/leads">
+          <svg class="ico" aria-hidden="true"><use href="#i-back"></use></svg><span>Voltar para leads</span>
+        </a>
+
+        <div class="bezel leadhead" id="lead-head-card">
+          <div class="bezel__in leadhead__in">
+            <div class="leadhead__id">
+              <span class="avatar avatar--lg" id="lead-initials" aria-hidden="true">··</span>
+              <div class="leadhead__names">
+                <h1 class="leadhead__title" id="lead-title">—</h1>
+                <p class="leadhead__sub" id="lead-subtitle"></p>
+                <div class="tags" id="lead-tags"></div>
+              </div>
+            </div>
+
+            <div class="leadhead__num">
+              <strong class="leadhead__value" id="lead-amount">—</strong>
+              <span class="leadhead__meta" id="lead-meta"></span>
+
+              <div class="leadowner" id="lead-owner-ctl" hidden></div>
+            </div>
+
+            <div class="leadhead__acts">
+              <button type="button" class="btn btn--ghost btn--sm" id="lead-edit">
+                <svg class="ico" aria-hidden="true"><use href="#i-pencil"></use></svg><span class="btn__txt">Editar</span>
+              </button>
+              <button type="button" class="btn btn--ghost btn--sm" id="lead-new-proposal">
+                <svg class="ico" aria-hidden="true"><use href="#i-doc"></use></svg><span class="btn__txt">Nova proposta</span>
+              </button>
+              <button type="button" class="btn btn--ghost btn--sm" id="lead-whats">
+                <svg class="ico" aria-hidden="true"><use href="#i-whats"></use></svg><span class="btn__txt">WhatsApp</span>
+              </button>
+              <button type="button" class="btn btn--win btn--sm" id="lead-win">
+                <svg class="ico" aria-hidden="true"><use href="#i-trophy"></use></svg><span class="btn__txt">Marcar ganho</span>
+              </button>
+              <button type="button" class="btn btn--quiet btn--sm" id="lead-lose">
+                <svg class="ico" aria-hidden="true"><use href="#i-x-circle"></use></svg><span class="btn__txt">Perdi</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="stagebar" id="lead-stagebar" role="group" aria-label="Etapa do negócio"></div>
+
+        <div class="leadgrid">
+          <div class="leadgrid__main">
+            <div class="bezel">
+              <div class="bezel__in panel">
+                <div class="panel__head">
+                  <h2 class="panel__title">Linha do tempo</h2>
+                  <div class="tlfilters" id="tl-filters" role="group" aria-label="Filtrar o histórico">
+                    <button type="button" class="tlfilter is-active" data-tl="todos">Tudo</button>
+                    <button type="button" class="tlfilter" data-tl="contato">Contatos</button>
+                    <button type="button" class="tlfilter" data-tl="sistema">Sistema</button>
+                  </div>
+                </div>
+
+                <form class="tlnew" id="activity-form" novalidate>
+                  <p class="formerr" id="activity-error" role="alert" hidden></p>
+                  <div class="tlnew__row">
+                    <select id="activity-kind" aria-label="Tipo de registro">
+                      <option value="ligacao">Ligação</option>
+                      <option value="reuniao">Reunião</option>
+                      <option value="email">E-mail</option>
+                      <option value="nota">Anotação</option>
+                      <option value="tarefa">Tarefa</option>
+                    </select>
+                    <input type="text" id="activity-title" maxlength="160" required
+                           placeholder="O que aconteceu? Ex.: liguei e ele pediu para retomar dia 20"
+                           aria-label="Descrição do registro">
+                    <button type="submit" class="btn btn--primary btn--sm" id="activity-save">
+                      <svg class="ico" aria-hidden="true"><use href="#i-plus"></use></svg><span class="btn__txt">Registrar</span>
+                    </button>
+                  </div>
+                  <div class="tlnew__row tlnew__row--due" id="activity-due-row" hidden>
+                    <label for="activity-due">Vence em</label>
+                    <input type="date" id="activity-due">
+                  </div>
+                  <p class="tlnew__hint" id="activity-hint">
+                    Ligação, reunião e e-mail contam como contato e zeram o alerta de acompanhamento.
+                    Anotação não — escrever sobre o cliente não é falar com ele.
+                  </p>
+                </form>
+
+                <ol class="timeline" id="lead-timeline"></ol>
+              </div>
+            </div>
+
+            <div class="bezel">
+              <div class="bezel__in panel">
+                <div class="panel__head">
+                  <h2 class="panel__title">Propostas</h2>
+                  <button type="button" class="btn btn--quiet btn--xs" id="lead-new-proposal-2">Nova proposta</button>
+                </div>
+                <div id="lead-proposals"></div>
+              </div>
+            </div>
+
+            <div class="bezel" id="lead-wa-card">
+              <div class="bezel__in panel">
+                <div class="panel__head">
+                  <h2 class="panel__title">WhatsApp</h2>
+                  <span class="chip" id="lead-wa-status">—</span>
+                </div>
+                <div class="wachat" id="lead-wa-chat"></div>
+                <form class="wasend" id="wa-form" novalidate>
+                  <p class="formerr" id="wa-error" role="alert" hidden></p>
+                  <div class="wasend__row">
+                    <input type="text" id="wa-body" maxlength="1000" placeholder="Escreva a mensagem…"
+                           aria-label="Mensagem do WhatsApp">
+                    <button type="submit" class="btn btn--primary btn--sm" id="wa-send">
+                      <svg class="ico" aria-hidden="true"><use href="#i-send"></use></svg><span class="btn__txt">Enviar</span>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <aside class="leadgrid__side">
+            <div class="bezel">
+              <div class="bezel__in panel">
+                <div class="panel__head"><h2 class="panel__title">Contato</h2></div>
+                <dl class="deflist" id="lead-contact"></dl>
+              </div>
+            </div>
+
+            <div class="bezel" id="lead-custom-card" hidden>
+              <div class="bezel__in panel">
+                <div class="panel__head">
+                  <h2 class="panel__title">Campos personalizados</h2>
+                  <a class="chip chip--link" href="#/config">Gerenciar</a>
+                </div>
+                <dl class="deflist" id="lead-custom"></dl>
+              </div>
+            </div>
+
+            <div class="bezel">
+              <div class="bezel__in panel">
+                <div class="panel__head"><h2 class="panel__title">Tarefas em aberto</h2></div>
+                <div id="lead-tasks"></div>
+              </div>
+            </div>
+
+            <div class="bezel" id="lead-lost-card" hidden>
+              <div class="bezel__in panel panel--lost">
+                <div class="panel__head"><h2 class="panel__title">Motivo da perda</h2></div>
+                <p class="lost__reason" id="lead-lost-reason"></p>
+                <p class="lost__note" id="lead-lost-note"></p>
+                <button type="button" class="btn btn--quiet btn--xs" id="lead-fix-reason">Corrigir o motivo</button>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="page" id="page-propostas" aria-labelledby="t-propostas" hidden>
+        <div class="page__head">
+          <div>
+            <h1 class="page__title" id="t-propostas">Propostas</h1>
+            <p class="page__sub">Crie, envie por link e acompanhe quando o cliente abriu.</p>
+          </div>
+          <button type="button" class="btn btn--primary" id="new-proposal-btn" data-pago>
+            <svg class="ico" aria-hidden="true"><use href="#i-plus"></use></svg><span class="btn__txt">Nova proposta</span>
+          </button>
+        </div>
+
+        <div class="propsum" id="prop-summary" data-pago></div>
+
+        <div class="fupfilters" id="prop-filters" role="group" aria-label="Filtrar por estado" data-pago>
+          <button type="button" class="fupfilter is-active" data-prop="todas">Todas</button>
+          <button type="button" class="fupfilter" data-prop="Rascunho">Rascunho</button>
+          <button type="button" class="fupfilter" data-prop="Enviada">Enviadas</button>
+          <button type="button" class="fupfilter" data-prop="Visualizada">Vistas</button>
+          <button type="button" class="fupfilter" data-prop="Aceita">Aceitas</button>
+          <button type="button" class="fupfilter" data-prop="Recusada">Recusadas</button>
+        </div>
+
+        <div class="proplist" id="prop-list" data-pago></div>
+      </section>
+
+      <section class="page" id="page-automacoes" aria-labelledby="t-automacoes" hidden>
+        <div class="page__head">
+          <div>
+            <h1 class="page__title" id="t-automacoes">Automações</h1>
+            <p class="page__sub">Quando algo acontece, o Vertex age sozinho. Você escreve a regra uma vez.</p>
+          </div>
+          <button type="button" class="btn btn--primary" id="new-automation-btn" data-pago>
+            <svg class="ico" aria-hidden="true"><use href="#i-plus"></use></svg><span class="btn__txt">Nova automação</span>
+          </button>
+        </div>
+
+        <div class="autolist" id="auto-list" data-pago></div>
+
+        <div class="bezel" data-pago>
+          <div class="bezel__in panel">
+            <div class="panel__head">
+              <h2 class="panel__title">Histórico de execução</h2>
+              <span class="chip">O que rodou, sobre quem, e se deu erro</span>
+            </div>
+            <div id="auto-runs"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="page-cobranca" aria-labelledby="t-cobranca" hidden>
+        <div class="page__head">
+          <div>
+            <h1 class="page__title" id="t-cobranca">Plano e cobrança</h1>
+            <p class="page__sub">O que a sua conta tem hoje, o que muda em cada plano e o histórico do que foi cobrado.</p>
+          </div>
+        </div>
+        <div id="cob-conteudo"></div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<div class="modal" id="lead-modal" hidden>
+  <div class="modal__scrim" data-close-modal></div>
+  <div class="bezel modal__card" role="dialog" aria-modal="true" aria-labelledby="lead-modal-title">
+    <div class="bezel__in modal__in">
+      <div class="modal__head">
+        <h2 class="modal__title" id="lead-modal-title">Novo lead</h2>
+        <button type="button" class="iconbtn" data-close-modal aria-label="Fechar">
+          <svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg>
+        </button>
+      </div>
+
+      <form id="lead-form" novalidate>
+        <p class="formerr" id="lead-error" role="alert" hidden></p>
+        <input type="hidden" id="lead-id">
+
+        <div class="field">
+          <label for="lead-name">Nome do cliente</label>
+          <input type="text" id="lead-name" name="name" required maxlength="120" placeholder="Ana Ribeiro">
+        </div>
+        <div class="field">
+          <label for="lead-company">Empresa</label>
+          <input type="text" id="lead-company" name="company" required maxlength="120" placeholder="Northwind Ltda">
+        </div>
+        <div class="field__row">
+          <div class="field">
+            <label for="lead-value">Valor (R$)</label>
+            <input type="text" inputmode="decimal" id="lead-value" name="value" required placeholder="25000" aria-describedby="lead-value-hint">
+            <small class="field__hint" id="lead-value-hint">Use ponto ou vírgula para os centavos.</small>
+          </div>
+          <div class="field">
+            <label for="lead-status">Etapa</label>
+            <select id="lead-status" name="status" required>
+              <option value="Prospecção">Prospecção</option>
+              <option value="Qualificação">Qualificação</option>
+              <option value="Proposta">Proposta</option>
+              <option value="Negociação">Negociação</option>
+              <option value="Ganho">Ganho</option>
+
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="lead-segment">Segmento</label>
+          <select id="lead-segment" name="segment" required>
+            <option value="SaaS">SaaS</option>
+            <option value="Saúde">Saúde</option>
+            <option value="Varejo">Varejo</option>
+            <option value="Educação">Educação</option>
+            <option value="Indústria">Indústria</option>
+            <option value="Finanças">Finanças</option>
+            <option value="Serviços">Serviços</option>
+            <option value="Outros">Outros</option>
+          </select>
+        </div>
+
+        <div class="field__row">
+          <div class="field">
+            <label for="lead-email">E-mail</label>
+            <input type="email" id="lead-email" name="email" maxlength="254" placeholder="ana@empresa.com.br">
+          </div>
+          <div class="field">
+            <label for="lead-whatsapp">WhatsApp</label>
+            <input type="tel" id="lead-whatsapp" name="whatsapp" maxlength="32" placeholder="(11) 98765-4321"
+                   aria-describedby="lead-whatsapp-hint">
+            <small class="field__hint" id="lead-whatsapp-hint">Com DDD. O código do país entra sozinho.</small>
+          </div>
+        </div>
+
+        <div class="field__row">
+          <div class="field">
+            <label for="lead-phone">Telefone</label>
+            <input type="tel" id="lead-phone" name="phone" maxlength="32" placeholder="(11) 3000-0000">
+          </div>
+          <div class="field">
+            <label for="lead-owner">Responsável</label>
+            <input type="text" id="lead-owner" name="owner" maxlength="80" placeholder="Quem cuida deste negócio">
+          </div>
+        </div>
+
+        <div class="field__row">
+          <div class="field">
+            <label for="lead-source">Origem</label>
+            <input type="text" id="lead-source" name="source" maxlength="60" placeholder="Indicação, site, feira…">
+          </div>
+          <div class="field">
+            <label for="lead-tags-input">Tags</label>
+            <input type="text" id="lead-tags-input" maxlength="200" placeholder="quente, indicação"
+                   aria-describedby="lead-tags-hint">
+            <small class="field__hint" id="lead-tags-hint">Separe por vírgula.</small>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="lead-notes">Observações</label>
+          <textarea id="lead-notes" name="notes" rows="3" maxlength="4000"
+                    placeholder="O que é importante lembrar sobre este negócio"></textarea>
+        </div>
+
+        <div id="lead-custom-fields"></div>
+
+        <div class="modal__acts">
+          <button type="button" class="btn btn--quiet" data-close-modal>Cancelar</button>
+          <button type="submit" class="btn btn--primary" id="lead-save">
+            <span>Salvar lead</span>
+            <span class="btn__orb" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-arrow-ur"></use></svg></span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="import-modal" hidden>
+  <div class="modal__scrim" data-close-modal></div>
+  <div class="bezel modal__card" role="dialog" aria-modal="true" aria-labelledby="import-modal-title">
+    <div class="bezel__in modal__in">
+      <div class="modal__head">
+        <h2 class="modal__title" id="import-modal-title">Importar leads (CSV)</h2>
+        <button type="button" class="iconbtn" data-close-modal aria-label="Fechar">
+          <svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg>
+        </button>
+      </div>
+
+      <div class="modal__body">
+
+        <div id="import-step-file">
+          <p class="import-hint">Envie um arquivo <strong>.csv</strong> com uma linha por lead. <strong>Nome</strong> e <strong>Empresa</strong> são obrigatórios; o resto é opcional.</p>
+          <label class="filedrop" for="import-file">
+            <svg class="ico" aria-hidden="true"><use href="#i-doc"></use></svg>
+            <span id="import-file-label">Escolher arquivo CSV</span>
+            <input type="file" id="import-file" accept=".csv,text/csv" hidden>
+          </label>
+          <label class="import-check"><input type="checkbox" id="import-has-header" checked> A primeira linha é o cabeçalho</label>
+        </div>
+
+        <div id="import-step-preview" hidden>
+          <div class="import-summary" id="import-summary"></div>
+          <p class="import-hint">Confira para onde vai cada coluna. <strong>*</strong> é obrigatório.</p>
+          <div class="import-mapping" id="import-mapping"></div>
+          <div class="tablewrap">
+            <table class="table">
+              <caption class="sr-only">Prévia das primeiras linhas</caption>
+              <thead><tr><th scope="col">Linha</th><th scope="col">Nome</th><th scope="col">Empresa</th><th scope="col">Situação</th></tr></thead>
+              <tbody id="import-sample"></tbody>
+            </table>
+          </div>
+          <label class="import-check"><input type="checkbox" id="import-skip-dups" checked> Pular duplicados</label>
+        </div>
+
+        <div id="import-step-result" hidden>
+          <div class="import-result" id="import-result"></div>
+        </div>
+
+        <p class="form-error" id="import-error" hidden></p>
+      </div>
+
+      <div class="modal__acts">
+        <button type="button" class="btn btn--quiet" data-close-modal>Fechar</button>
+        <button type="button" class="btn btn--primary" id="import-confirm-btn" hidden>Importar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal modal--sm" id="lgpd-modal" hidden>
+  <div class="modal__scrim" data-close-modal></div>
+  <div class="bezel modal__card" role="alertdialog" aria-modal="true" aria-labelledby="lgpd-modal-title">
+    <div class="bezel__in modal__in">
+      <div class="modal__head">
+        <h2 class="modal__title" id="lgpd-modal-title">Excluir minha conta</h2>
+        <button type="button" class="iconbtn" data-close-modal aria-label="Fechar">
+          <svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg>
+        </button>
+      </div>
+      <div class="modal__body">
+        <p class="panel__body">Isso apaga <strong>para sempre</strong> a sua conta e todos os dados — leads, propostas, atividades, histórico. Não dá para desfazer.</p>
+        <div class="field" id="lgpd-pw-field">
+          <label for="lgpd-password">Confirme sua senha</label>
+          <input type="password" id="lgpd-password" autocomplete="current-password">
+        </div>
+        <div class="field" id="lgpd-confirm-field" hidden>
+          <label for="lgpd-confirm">Digite <strong>EXCLUIR</strong> para confirmar</label>
+          <input type="text" id="lgpd-confirm" autocomplete="off" placeholder="EXCLUIR">
+        </div>
+        <p class="formerr" id="lgpd-modal-error" role="alert" hidden></p>
+      </div>
+      <div class="modal__acts">
+        <button type="button" class="btn btn--quiet" data-close-modal>Cancelar</button>
+        <button type="button" class="btn btn--danger" id="lgpd-confirm-btn">Excluir para sempre</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal modal--sm" id="convite-modal" hidden>
+  <div class="modal__scrim" data-close-modal></div>
+  <div class="bezel modal__card" role="dialog" aria-modal="true" aria-labelledby="convite-modal-title">
+    <div class="bezel__in modal__in">
+      <div class="modal__head">
+        <h2 class="modal__title" id="convite-modal-title">Convite para uma equipe</h2>
+        <button type="button" class="iconbtn" data-close-modal aria-label="Fechar">
+          <svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg>
+        </button>
+      </div>
+      <div class="modal__body">
+        <p class="panel__body" id="convite-modal-body">Você foi convidado para entrar em uma equipe no Vertex.</p>
+        <p class="formerr" id="convite-modal-error" role="alert" hidden></p>
+      </div>
+      <div class="modal__acts">
+        <button type="button" class="btn btn--quiet" data-close-modal>Agora não</button>
+        <button type="button" class="btn btn--primary" id="convite-accept">
+          <svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg><span>Entrar na equipe</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal modal--lg" id="admin-modal" hidden>
+  <div class="modal__scrim" data-close-modal></div>
+  <div class="bezel modal__card" role="dialog" aria-modal="true" aria-labelledby="admin-modal-title">
+    <div class="bezel__in modal__in">
+      <div class="modal__head">
+        <h2 class="modal__title" id="admin-modal-title">Conta</h2>
+        <button type="button" class="iconbtn" data-close-modal aria-label="Fechar">
+          <svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg>
+        </button>
+      </div>
+      <div class="modal__body" id="admin-modal-body"></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal modal--sm" id="confirm-modal" hidden>
+  <div class="modal__scrim" data-close-modal></div>
+  <div class="bezel modal__card" role="alertdialog" aria-modal="true"
+       aria-labelledby="confirm-title" aria-describedby="confirm-text">
+    <div class="bezel__in modal__in confirm">
+      <span class="confirm__seal confirm__seal--danger" id="confirm-seal" aria-hidden="true">
+        <svg class="ico"><use href="#i-trash"></use></svg>
+      </span>
+      <h2 class="confirm__title" id="confirm-title">Excluir lead</h2>
+      <p class="confirm__text" id="confirm-text"></p>
+
+      <div class="confirm__target" id="confirm-target" hidden>
+        <strong id="confirm-target-name"></strong>
+        <span id="confirm-target-meta"></span>
+      </div>
+
+      <p class="confirm__warn" id="confirm-warn">Esta ação não pode ser desfeita.</p>
+
+      <div class="confirm__acts">
+        <button type="button" class="btn btn--quiet" data-close-modal id="confirm-no">Cancelar</button>
+        <button type="button" class="btn btn--danger" id="confirm-yes">Excluir</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal modal--sm" id="loss-modal" hidden>
+  <div class="modal__scrim" data-close-modal></div>
+  <div class="bezel modal__card" role="dialog" aria-modal="true" aria-labelledby="loss-modal-title">
+    <div class="bezel__in modal__in">
+      <div class="modal__head">
+        <h2 class="modal__title" id="loss-modal-title">Por que este negócio foi perdido?</h2>
+        <button type="button" class="iconbtn" data-close-modal aria-label="Fechar">
+          <svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg>
+        </button>
+      </div>
+      <form id="loss-pick-form" novalidate>
+        <p class="formerr" id="loss-pick-error" role="alert" hidden></p>
+        <div class="confirm__target">
+          <strong id="loss-lead-name"></strong>
+          <span id="loss-lead-meta"></span>
+        </div>
+        <div class="reasons" id="loss-options" role="radiogroup" aria-label="Motivo da perda"></div>
+        <div class="field">
+          <label for="loss-note">Detalhe (opcional)</label>
+          <textarea id="loss-note" rows="2" maxlength="500"
+                    placeholder="Ex.: ficou 30% acima do concorrente"></textarea>
+        </div>
+        <div class="modal__acts">
+          <button type="button" class="btn btn--quiet" data-close-modal>Cancelar</button>
+          <button type="submit" class="btn btn--danger" id="loss-confirm">Registrar a perda</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal modal--lg" id="prop-modal" hidden>
+  <div class="modal__scrim" data-close-modal></div>
+  <div class="bezel modal__card" role="dialog" aria-modal="true" aria-labelledby="prop-modal-title">
+    <div class="bezel__in modal__in">
+      <div class="modal__head">
+        <h2 class="modal__title" id="prop-modal-title">Nova proposta</h2>
+        <button type="button" class="iconbtn" data-close-modal aria-label="Fechar">
+          <svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg>
+        </button>
+      </div>
+
+      <form id="prop-form" novalidate>
+        <p class="formerr" id="prop-error" role="alert" hidden></p>
+        <input type="hidden" id="prop-id">
+
+        <div class="field__row">
+          <div class="field">
+            <label for="prop-lead">Negócio</label>
+            <select id="prop-lead" required></select>
+          </div>
+          <div class="field">
+            <label for="prop-title">Título</label>
+            <input type="text" id="prop-title" maxlength="120" required placeholder="Implantação do sistema">
+          </div>
+        </div>
+
+        <div class="items">
+          <div class="items__head">
+            <span>Descrição</span><span>Qtd.</span><span>Valor unitário</span><span>Total</span><span></span>
+          </div>
+          <div id="prop-items"></div>
+          <button type="button" class="btn btn--quiet btn--sm" id="prop-add-item">
+            <svg class="ico" aria-hidden="true"><use href="#i-plus"></use></svg><span>Adicionar item</span>
+          </button>
+        </div>
+
+        <div class="totals">
+          <div class="field">
+            <label for="prop-discount">Desconto (R$)</label>
+            <input type="text" inputmode="decimal" id="prop-discount" placeholder="0">
+          </div>
+          <dl class="totals__box">
+            <div><dt>Subtotal</dt><dd id="prop-subtotal">R$ 0,00</dd></div>
+            <div class="totals__grand"><dt>Total</dt><dd id="prop-total">R$ 0,00</dd></div>
+          </dl>
+        </div>
+
+        <div class="field__row">
+          <div class="field">
+            <label for="prop-validity">Validade (dias)</label>
+            <input type="number" id="prop-validity" min="0" max="365" value="15">
+          </div>
+          <div class="field">
+            <label for="prop-delivery">Prazo de entrega</label>
+            <input type="text" id="prop-delivery" maxlength="200" placeholder="30 dias após a assinatura">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="prop-terms">Condições comerciais</label>
+          <textarea id="prop-terms" rows="3" maxlength="2000"
+                    placeholder="Pagamento em 30 dias. Inclui suporte por 12 meses."></textarea>
+        </div>
+        <div class="field">
+          <label for="prop-notes">Observações</label>
+          <textarea id="prop-notes" rows="2" maxlength="2000"></textarea>
+        </div>
+
+        <div class="modal__acts">
+          <button type="button" class="btn btn--quiet" data-close-modal>Cancelar</button>
+          <button type="submit" class="btn btn--primary" id="prop-save">
+            <span>Salvar proposta</span>
+            <span class="btn__orb" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-arrow-ur"></use></svg></span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal modal--sm" id="send-modal" hidden>
+  <div class="modal__scrim" data-close-modal></div>
+  <div class="bezel modal__card" role="dialog" aria-modal="true" aria-labelledby="send-modal-title">
+    <div class="bezel__in modal__in">
+      <div class="modal__head">
+        <h2 class="modal__title" id="send-modal-title">Enviar proposta</h2>
+        <button type="button" class="iconbtn" data-close-modal aria-label="Fechar">
+          <svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg>
+        </button>
+      </div>
+      <form id="send-form" novalidate>
+        <p class="formerr" id="send-error" role="alert" hidden></p>
+        <div class="field">
+          <label for="send-link">Link para o cliente</label>
+          <div class="copyrow">
+            <input type="text" id="send-link" readonly>
+            <button type="button" class="btn btn--ghost btn--sm" id="send-copy">
+              <svg class="ico" aria-hidden="true"><use href="#i-link"></use></svg><span class="btn__txt">Copiar</span>
+            </button>
+          </div>
+          <small class="field__hint">
+            Quem tem o link vê esta proposta — e só ela. Você é avisado quando o cliente abrir.
+          </small>
+        </div>
+        <fieldset class="segmented">
+          <legend>Como enviar</legend>
+          <div class="segmented__row" role="radiogroup" aria-label="Canal de envio">
+            <label class="segmented__opt"><input type="radio" name="send-channel" value="link" checked>
+              <span><svg class="ico" aria-hidden="true"><use href="#i-link"></use></svg>Só marcar como enviada</span></label>
+            <label class="segmented__opt"><input type="radio" name="send-channel" value="whatsapp">
+              <span><svg class="ico" aria-hidden="true"><use href="#i-whats"></use></svg>Mandar no WhatsApp</span></label>
+          </div>
+        </fieldset>
+        <div class="field" id="send-msg-field" hidden>
+          <label for="send-message">Mensagem</label>
+          <textarea id="send-message" rows="3" maxlength="1000"></textarea>
+        </div>
+        <div class="modal__acts">
+          <button type="button" class="btn btn--quiet" data-close-modal>Cancelar</button>
+          <button type="submit" class="btn btn--primary" id="send-confirm">Enviar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal modal--lg" id="auto-modal" hidden>
+  <div class="modal__scrim" data-close-modal></div>
+  <div class="bezel modal__card" role="dialog" aria-modal="true" aria-labelledby="auto-modal-title">
+    <div class="bezel__in modal__in">
+      <div class="modal__head">
+        <h2 class="modal__title" id="auto-modal-title">Nova automação</h2>
+        <button type="button" class="iconbtn" data-close-modal aria-label="Fechar">
+          <svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg>
+        </button>
+      </div>
+
+      <form id="auto-form" novalidate>
+        <p class="formerr" id="auto-error" role="alert" hidden></p>
+        <input type="hidden" id="auto-id">
+
+        <div class="field">
+          <label for="auto-name">Nome da automação</label>
+          <input type="text" id="auto-name" maxlength="80" required
+                 placeholder="Cobrar proposta parada em 3 dias">
+        </div>
+
+        <div class="flow" id="auto-flow">
+          <section class="flowstep flowstep--when">
+            <header class="flowstep__head">
+              <span class="flowstep__tag">Quando</span>
+              <h3>acontecer isto</h3>
+            </header>
+            <div class="field">
+              <label class="sr-only" for="auto-event">Evento</label>
+              <select id="auto-event" required></select>
+            </div>
+            <p class="flowstep__hint" id="auto-event-hint"></p>
+          </section>
+
+          <span class="flowarrow" aria-hidden="true">
+            <svg class="ico"><use href="#i-arrow-right"></use></svg>
+          </span>
+
+          <section class="flowstep flowstep--if">
+            <header class="flowstep__head">
+              <span class="flowstep__tag">Se</span>
+              <h3>o negócio for assim</h3>
+            </header>
+            <div id="auto-conditions"></div>
+            <button type="button" class="btn btn--quiet btn--xs" id="auto-add-cond">
+              <svg class="ico" aria-hidden="true"><use href="#i-plus"></use></svg><span>Adicionar condição</span>
+            </button>
+            <p class="flowstep__hint">Sem nenhuma condição, a regra vale para todos.</p>
+          </section>
+
+          <span class="flowarrow" aria-hidden="true">
+            <svg class="ico"><use href="#i-arrow-right"></use></svg>
+          </span>
+
+          <section class="flowstep flowstep--then">
+            <header class="flowstep__head">
+              <span class="flowstep__tag">Então</span>
+              <h3>faça isto</h3>
+            </header>
+            <div id="auto-actions"></div>
+            <button type="button" class="btn btn--quiet btn--xs" id="auto-add-action">
+              <svg class="ico" aria-hidden="true"><use href="#i-plus"></use></svg><span>Adicionar ação</span>
+            </button>
+          </section>
+        </div>
+
+        <label class="check">
+          <input type="checkbox" id="auto-active" checked>
+          <span>Ativa</span>
+        </label>
+
+        <div class="modal__acts">
+          <button type="button" class="btn btn--quiet" data-close-modal>Cancelar</button>
+          <button type="submit" class="btn btn--primary" id="auto-save">
+            <span>Salvar automação</span>
+            <span class="btn__orb" aria-hidden="true"><svg class="ico" aria-hidden="true"><use href="#i-arrow-ur"></use></svg></span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal modal--sm" id="field-modal" hidden>
+  <div class="modal__scrim" data-close-modal></div>
+  <div class="bezel modal__card" role="dialog" aria-modal="true" aria-labelledby="field-modal-title">
+    <div class="bezel__in modal__in">
+      <div class="modal__head">
+        <h2 class="modal__title" id="field-modal-title">Novo campo</h2>
+        <button type="button" class="iconbtn" data-close-modal aria-label="Fechar">
+          <svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg>
+        </button>
+      </div>
+      <form id="field-form" novalidate>
+        <p class="formerr" id="field-error" role="alert" hidden></p>
+        <input type="hidden" id="field-id">
+        <div class="field">
+          <label for="field-label">Nome do campo</label>
+          <input type="text" id="field-label" maxlength="60" required placeholder="CNPJ">
+        </div>
+        <div class="field">
+          <label for="field-type">Tipo</label>
+          <select id="field-type">
+            <option value="texto">Texto</option>
+            <option value="numero">Número</option>
+            <option value="moeda">Valor em reais</option>
+            <option value="data">Data</option>
+            <option value="lista">Lista (escolha uma)</option>
+            <option value="multipla">Lista (várias)</option>
+            <option value="sim_nao">Sim / Não</option>
+            <option value="email">E-mail</option>
+            <option value="telefone">Telefone</option>
+          </select>
+          <small class="field__hint" id="field-type-hint">O tipo não pode ser alterado depois.</small>
+        </div>
+        <div class="field" id="field-options-wrap" hidden>
+          <label for="field-options">Opções</label>
+          <textarea id="field-options" rows="3" placeholder="Uma opção por linha"></textarea>
+        </div>
+        <div class="field">
+          <label for="field-desc">Explicação (opcional)</label>
+          <input type="text" id="field-desc" maxlength="200" placeholder="Aparece embaixo do campo">
+        </div>
+        <label class="check">
+          <input type="checkbox" id="field-required">
+          <span>Obrigatório ao salvar o lead</span>
+        </label>
+        <div class="modal__acts">
+          <button type="button" class="btn btn--quiet" data-close-modal>Cancelar</button>
+          <button type="submit" class="btn btn--primary" id="field-save">Salvar campo</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal modal--sm" id="tpl-modal" hidden>
+  <div class="modal__scrim" data-close-modal></div>
+  <div class="bezel modal__card" role="dialog" aria-modal="true" aria-labelledby="tpl-modal-title">
+    <div class="bezel__in modal__in">
+      <div class="modal__head">
+        <h2 class="modal__title" id="tpl-modal-title">Novo modelo de mensagem</h2>
+        <button type="button" class="iconbtn" data-close-modal aria-label="Fechar">
+          <svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg>
+        </button>
+      </div>
+      <form id="tpl-form" novalidate>
+        <p class="formerr" id="tpl-error" role="alert" hidden></p>
+        <div class="field">
+          <label for="tpl-name">Nome</label>
+          <input type="text" id="tpl-name" maxlength="80" required placeholder="retomada_proposta"
+                 aria-describedby="tpl-name-hint">
+          <small class="field__hint" id="tpl-name-hint">
+            Igual ao nome aprovado no painel da Meta. Só letras, números e underline.
+          </small>
+        </div>
+        <div class="field__row">
+          <div class="field">
+            <label for="tpl-lang">Idioma</label>
+            <input type="text" id="tpl-lang" maxlength="10" value="pt_BR">
+          </div>
+          <div class="field">
+            <label for="tpl-cat">Categoria</label>
+            <select id="tpl-cat">
+              <option value="UTILITY">Utilidade</option>
+              <option value="MARKETING">Marketing</option>
+              <option value="AUTHENTICATION">Autenticação</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="tpl-body">Texto</label>
+          <textarea id="tpl-body" rows="4" maxlength="1024" required
+                    placeholder="Olá! Passando para saber se você conseguiu ver nossa proposta."></textarea>
+        </div>
+        <div class="modal__acts">
+          <button type="button" class="btn btn--quiet" data-close-modal>Cancelar</button>
+          <button type="submit" class="btn btn--primary" id="tpl-save">Salvar modelo</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="auth pw is-hidden" id="paywall-screen">
+  <main class="auth__wrap pw__wrap">
+    <div class="bezel auth__card">
+      <div class="bezel__in auth__card-in">
+
+        <div class="auth__brand">
+          <span class="brand__mark"><svg class="ico" aria-hidden="true"><use href="#i-mark"></use></svg></span>
+          <span class="brand__name">Vertex <em>CRM</em></span>
+        </div>
+
+        <h1 class="auth__title">Escolha um plano para continuar</h1>
+        <p class="auth__sub" id="paywall-sub">Os seus dados continuam aqui, intactos.</p>
+
+        <div class="pw__planos" id="paywall-planos"></div>
+
+        <p class="pw__nota">
+          Sem fidelidade — cancela em um botão. Compras pela internet têm
+          <strong>7 dias de arrependimento</strong> pelo Código de Defesa do Consumidor.
+        </p>
+
+        <div class="pw__rodape">
+          <button type="button" class="linkbtn" id="paywall-export">
+            <svg class="ico" aria-hidden="true"><use href="#i-download"></use></svg>
+            <span>Exportar meus dados</span>
+          </button>
+          <button type="button" class="linkbtn" id="paywall-logout">
+            <svg class="ico" aria-hidden="true"><use href="#i-logout"></use></svg>
+            <span>Sair</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="modal" id="email-modal" hidden>
+  <div class="modal__scrim" data-fechar></div>
+  <div class="bezel modal__card" role="dialog" aria-modal="true" aria-labelledby="email-modal-title">
+    <div class="bezel__in modal__in">
+      <h2 class="modal__title" id="email-modal-title">Alterar e-mail</h2>
+
+      <form id="email-passo1" novalidate>
+        <p class="modal__text">Confirme a sua senha e diga o novo endereço. O código vai para o
+          endereço <strong>novo</strong> — é assim que sabemos que ele é seu.</p>
+        <p class="formerr" id="email-erro1" role="alert" hidden></p>
+        <div class="field">
+          <label for="email-novo">Novo e-mail</label>
+          <input type="email" id="email-novo" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="email-senha">Sua senha</label>
+          <input type="password" id="email-senha" autocomplete="current-password" required>
+        </div>
+        <div class="modal__acts">
+          <button type="button" class="btn btn--ghost" data-fechar>Cancelar</button>
+          <button type="submit" class="btn btn--primary">Enviar código</button>
+        </div>
+      </form>
+
+      <form id="email-passo2" novalidate hidden>
+        <p class="modal__text">Enviamos um código de 6 dígitos para <strong id="email-destino">—</strong>.
+          Digite-o abaixo para concluir a troca.</p>
+        <p class="formerr" id="email-erro2" role="alert" hidden></p>
+        <div class="field">
+          <label for="email-codigo">Código</label>
+          <input type="text" id="email-codigo" inputmode="numeric" maxlength="6"
+                 autocomplete="one-time-code" required>
+        </div>
+        <div class="modal__acts">
+          <button type="button" class="btn btn--ghost" data-fechar>Cancelar</button>
+          <button type="submit" class="btn btn--primary">Confirmar troca</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="toasts" id="toasts" role="region" aria-live="polite" aria-label="Notificações"></div>
+
+</body>
+</html>

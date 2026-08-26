@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Descadastro · Vertex CRM</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/favicon.svg?v=e02621e8e6">
+  <style>
+    :root{ color-scheme: light dark; }
+    *{ box-sizing: border-box; }
+    body{
+      margin:0; min-height:100vh; display:grid; place-items:center;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background:#0f1115; color:#e7e9ee; padding:24px; line-height:1.55;
+    }
+    .card{
+      width:100%; max-width:440px; background:#171a21; border:1px solid #262a34;
+      border-radius:16px; padding:32px; text-align:center;
+    }
+    h1{ font-size:1.25rem; margin:0 0 8px; }
+    p{ margin:0 0 20px; color:#a8adba; font-size:.95rem; }
+    button{
+      appearance:none; border:0; cursor:pointer; font-size:.95rem; font-weight:600;
+      padding:12px 20px; border-radius:10px; background:#e11d48; color:#fff;
+    }
+    button:disabled{ opacity:.6; cursor:default; }
+    .quiet{ color:#a8adba; }
+    .ok{ color:#34d399; }
+    .marca{ margin-top:24px; font-size:.8rem; color:#6b7180; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1 id="titulo">Cancelar inscrição</h1>
+    <p id="texto">Você não receberá mais e-mails de marketing desta empresa. Confirme abaixo.</p>
+    <button id="btn" type="button">Confirmar descadastro</button>
+    <p class="marca">Vertex CRM</p>
+  </main>
+  <script src="/js/descadastro.js?v=9384775258"></script>
+</body>
+</html>

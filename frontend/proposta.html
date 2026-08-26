@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0A0710">
+
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Proposta comercial.">
+<title>Proposta comercial</title>
+<link rel="icon" href="/favicon.svg?v=e02621e8e6" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico?v=49db5a4f98" sizes="16x16 32x32 48x48">
+<link rel="stylesheet" href="/css/style.css?v=f0dda0401a">
+<link rel="stylesheet" href="/css/proposta.css?v=c320537328">
+<script type="module" src="/js/proposta.js?v=ed8f31aa18"></script>
+</head>
+<body class="pub">
+
+<svg class="sprite" aria-hidden="true" focusable="false"><defs>
+  <symbol id="i-mark" viewBox="0 0 24 24"><path d="M12 2.6 20.5 7.3v9.4L12 21.4 3.5 16.7V7.3z"/><path d="M12 12.2 20.5 7.3M12 12.2 3.5 7.3M12 12.2v9.2"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.6 4.6 4.6L19 6.8"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><path d="M12 6.8V12l3.4 2"/></symbol>
+  <symbol id="i-print" viewBox="0 0 24 24"><path d="M6.6 9.4V3.8h10.8v5.6"/><path d="M6.6 18.2H4.8a1.6 1.6 0 0 1-1.6-1.6V11a1.6 1.6 0 0 1 1.6-1.6h14.4A1.6 1.6 0 0 1 20.8 11v5.6a1.6 1.6 0 0 1-1.6 1.6h-1.8"/><path d="M6.6 14.4h10.8v5.8H6.6z"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><path d="M12 7.6v5M12 16.2h.01"/></symbol>
+  <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M7.4 4h9.2v5a4.6 4.6 0 1 1-9.2 0z"/><path d="M7.4 5.6H4.8v1.6a2.6 2.6 0 0 0 2.6 2.6M16.6 5.6h2.6v1.6a2.6 2.6 0 0 1-2.6 2.6"/><path d="M12 13.6V17M8.6 20.4h6.8"/></symbol>
+</defs></svg>
+
+<div class="grain" aria-hidden="true"></div>
+
+<div class="pubstate" id="pub-loading">
+  <span class="pubstate__mark"><svg class="ico" aria-hidden="true"><use href="#i-mark"></use></svg></span>
+  <p>Carregando a proposta…</p>
+</div>
+
+<div class="pubstate" id="pub-error" hidden>
+  <span class="pubstate__mark pubstate__mark--warn"><svg class="ico" aria-hidden="true"><use href="#i-alert"></use></svg></span>
+  <h1>Proposta não encontrada</h1>
+  <p id="pub-error-text">
+    Este link não existe mais ou foi digitado incompleto.
+    Peça um link novo para quem enviou a proposta.
+  </p>
+</div>
+
+<main class="doc" id="pub-doc" hidden>
+  <article class="bezel sheet">
+    <div class="bezel__in sheet__in">
+
+      <header class="sheet__head">
+        <div class="sheet__brand">
+          <span class="brand__mark"><svg class="ico" aria-hidden="true"><use href="#i-mark"></use></svg></span>
+          <span class="sheet__by">
+            <small>Proposta de</small>
+            <strong id="pub-owner">—</strong>
+          </span>
+        </div>
+        <div class="sheet__num">
+          <span class="pubpill" id="pub-status">—</span>
+          <strong id="pub-number">—</strong>
+          <small id="pub-date"></small>
+        </div>
+      </header>
+
+      <h1 class="sheet__title" id="pub-title">—</h1>
+
+      <dl class="sheet__to">
+        <div><dt>Para</dt><dd id="pub-client">—</dd></div>
+        <div><dt>Empresa</dt><dd id="pub-company">—</dd></div>
+        <div id="pub-valid-row"><dt>Válida até</dt><dd id="pub-valid">—</dd></div>
+      </dl>
+
+      <div class="tablewrap">
+        <table class="table sheet__items">
+          <caption class="sr-only">Itens da proposta</caption>
+          <thead>
+            <tr>
+              <th scope="col">Descrição</th>
+              <th scope="col" class="num">Qtd.</th>
+              <th scope="col" class="num">Valor unitário</th>
+              <th scope="col" class="num">Total</th>
+            </tr>
+          </thead>
+          <tbody id="pub-items"></tbody>
+        </table>
+      </div>
+
+      <dl class="sheet__totals">
+        <div><dt>Subtotal</dt><dd id="pub-subtotal">—</dd></div>
+        <div id="pub-discount-row" hidden><dt>Desconto</dt><dd id="pub-discount">—</dd></div>
+        <div class="sheet__grand"><dt>Total</dt><dd id="pub-total">—</dd></div>
+      </dl>
+
+      <section class="sheet__terms" id="pub-terms-wrap" hidden>
+        <h2>Condições</h2>
+        <p id="pub-terms"></p>
+      </section>
+      <section class="sheet__terms" id="pub-delivery-wrap" hidden>
+        <h2>Prazo</h2>
+        <p id="pub-delivery"></p>
+      </section>
+      <section class="sheet__terms" id="pub-notes-wrap" hidden>
+        <h2>Observações</h2>
+        <p id="pub-notes"></p>
+      </section>
+
+      <section class="decide" id="pub-decide" hidden>
+        <h2>Sua resposta</h2>
+        <form id="pub-form" novalidate>
+          <p class="formerr" id="pub-form-error" role="alert" hidden></p>
+          <div class="field">
+            <label for="pub-name">Seu nome completo</label>
+            <input type="text" id="pub-name" maxlength="80" required autocomplete="name"
+                   placeholder="Como você assina" aria-describedby="pub-name-hint">
+            <small class="field__hint" id="pub-name-hint">
+              Fica registrado junto com a data e a hora da sua resposta.
+            </small>
+          </div>
+          <div class="field">
+            <label for="pub-note">Quer dizer algo? (opcional)</label>
+            <textarea id="pub-note" rows="2" maxlength="500"></textarea>
+          </div>
+          <div class="decide__acts">
+            <button type="submit" class="btn btn--primary" data-decision="aceita">
+              <svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg><span>Aceitar proposta</span>
+            </button>
+            <button type="submit" class="btn btn--quiet" data-decision="recusada">
+              <svg class="ico" aria-hidden="true"><use href="#i-close"></use></svg><span>Recusar</span>
+            </button>
+          </div>
+
+          <p class="decide__legal">
+            Ao responder, ficam registrados o nome informado, a data, a hora e o endereço de
+            rede usado. É um aceite por link, com registro — <strong>não</strong> é assinatura
+            digital com certificado ICP-Brasil.
+          </p>
+        </form>
+      </section>
+
+      <section class="decided" id="pub-decided" hidden>
+        <span class="decided__seal" id="pub-decided-seal"><svg class="ico" aria-hidden="true"><use href="#i-check"></use></svg></span>
+        <div>
+          <strong id="pub-decided-title">—</strong>
+          <span id="pub-decided-meta"></span>
+        </div>
+      </section>
+
+      <section class="decided decided--expired" id="pub-expired" hidden>
+        <span class="decided__seal decided__seal--warn"><svg class="ico" aria-hidden="true"><use href="#i-clock"></use></svg></span>
+        <div>
+          <strong>Esta proposta está fora do prazo de validade</strong>
+          <span>Fale com quem enviou para receber uma proposta atualizada.</span>
+        </div>
+      </section>
+
+      <footer class="sheet__foot">
+        <button type="button" class="btn btn--quiet btn--sm" id="pub-print">
+          <svg class="ico" aria-hidden="true"><use href="#i-print"></use></svg><span>Imprimir ou salvar em PDF</span>
+        </button>
+        <span class="sheet__sig">Feito com <a href="/" rel="noopener">Vertex CRM</a></span>
+      </footer>
+
+    </div>
+  </article>
+</main>
+
+<div class="toasts" id="toasts" role="region" aria-live="polite" aria-label="Avisos"></div>
+
+</body>
+</html>

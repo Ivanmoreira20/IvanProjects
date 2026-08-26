@@ -1,0 +1,14 @@
+[Unit]
+Description=Backup diário do Vertex CRM
+
+[Timer]
+# 03:20 da manhã, com folga aleatória: se um dia houver mais de um servidor,
+# eles não disputam disco no mesmo segundo.
+OnCalendar=*-*-* 03:20:00
+RandomizedDelaySec=600
+# Se a máquina estava desligada na hora, roda assim que voltar. Sem isto, um
+# reboot na madrugada custaria o backup do dia inteiro.
+Persistent=true
+
+[Install]
+WantedBy=timers.target
