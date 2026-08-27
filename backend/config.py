@@ -37,6 +37,8 @@ DEFAULTS: dict[str, str] = {
 
     "VERTEX_PAYWALL": "",
 
+    "VERTEX_DEVICE_CHECK": "",
+
     "MP_ACCESS_TOKEN": "",
 
     "MP_PUBLIC_KEY": "",
@@ -201,6 +203,9 @@ def is_owner(email: str | None) -> bool:
 
 def paywall_ativo() -> bool:
     return get_flag("VERTEX_PAYWALL", default=False) is True
+
+def device_check_ativo() -> bool:
+    return get_flag("VERTEX_DEVICE_CHECK", default=False) is True
 
 def comp_pro_emails() -> frozenset[str]:
     raw = get("VERTEX_COMP_PRO_EMAILS")

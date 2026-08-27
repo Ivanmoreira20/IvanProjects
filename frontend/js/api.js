@@ -162,6 +162,15 @@ export function verify(email, code, remember) {
   });
 }
 
+export function verifyDevice(email, code, remember) {
+  return request('/auth/verify-device', {
+    method: 'POST',
+    body: { email, code: String(code || '').trim(), remember: Boolean(remember) },
+    publicRoute: true,
+    silent401: true,
+  });
+}
+
 export function resend(email) {
   return request('/auth/resend', {
     method: 'POST',

@@ -163,6 +163,7 @@ CSRF_EXEMPT_PATHS = frozenset(
         "/api/auth/login",
         "/api/auth/register",
         "/api/auth/verify",
+        "/api/auth/verify-device",
         "/api/auth/resend",
 
         "/api/auth/forgot",
@@ -830,6 +831,7 @@ def verify_email(payload: VerifyIn, request: Request, response: Response) -> dic
     failure: str | None = None
     result: dict[str, Any] | None = None
     token = csrf_token = ""
+    device_token = ""
 
     with db.get_conn() as conn:
         user = conn.execute(
@@ -859,6 +861,12 @@ def verify_email(payload: VerifyIn, request: Request, response: Response) -> dic
                     conn, user_id, payload.remember,
                     auth.rotulo_do_aparelho(request.headers.get("user-agent")),
                 )
+                if config.device_check_ativo():
+                    device_token = auth.novo_token_de_dispositivo()
+                    auth.registrar_dispositivo(
+                        conn, user_id, device_token,
+                        auth.rotulo_do_aparelho(request.headers.get("user-agent")),
+                    )
                 result = {
                     "id": user_id,
                     "name": user["name"],
@@ -876,6 +884,8 @@ def verify_email(payload: VerifyIn, request: Request, response: Response) -> dic
 
     auth.clear_login_rate_limit(request, payload.email)
     auth.set_session_cookies(request, response, token, csrf_token, payload.remember)
+    if device_token:
+        auth.set_device_cookie(request, response, device_token)
     return result
 
 @app.post(
@@ -908,6 +918,7 @@ def login(payload: LoginIn, request: Request, response: Response) -> Any:
     )
 
     pending_email: str | None = None
+    device_challenge: tuple[str, str, str] | None = None
     result: dict[str, Any] | None = None
     token = csrf_token = ""
 
@@ -931,6 +942,12 @@ def login(payload: LoginIn, request: Request, response: Response) -> Any:
         if int(user["email_verified"] or 0) == 0:
 
             pending_email = user["email"]
+        elif config.device_check_ativo() and not auth.dispositivo_conhecido(
+            conn, int(user["id"]), request.cookies.get(auth.DEVICE_COOKIE)
+        ):
+
+            code = auth.issue_email_code(conn, int(user["id"]), auth.DEVICE_CODE_PURPOSE)
+            device_challenge = (user["email"], user["name"], code)
         else:
 
             previous = request.cookies.get(auth.SESSION_COOKIE)
@@ -958,8 +975,75 @@ def login(payload: LoginIn, request: Request, response: Response) -> Any:
             status_code=status.HTTP_403_FORBIDDEN,
         )
 
+    if device_challenge is not None:
+        email_dest, nome_dest, codigo = device_challenge
+        mailer.send_verification_code(
+            email_dest, nome_dest, codigo, tipo=auth.DEVICE_CODE_PURPOSE
+        )
+        return JSONResponse(
+            {"detail": "device_verification", "email": email_dest},
+            status_code=status.HTTP_403_FORBIDDEN,
+        )
+
     assert result is not None
     auth.set_session_cookies(request, response, token, csrf_token, payload.remember)
+    return result
+
+@app.post("/api/auth/verify-device", response_model=UserOut)
+def verify_device(payload: VerifyIn, request: Request, response: Response) -> dict[str, Any]:
+    auth.enforce_verify_rate_limit(request, payload.email)
+
+    failure: str | None = None
+    result: dict[str, Any] | None = None
+    token = csrf_token = ""
+    device_token = ""
+
+    with db.get_conn() as conn:
+        user = conn.execute(
+            "SELECT id, name, email FROM users WHERE email = ?", (payload.email,)
+        ).fetchone()
+
+        if user is None:
+            failure = auth.GENERIC_CODE_ERROR
+        else:
+            user_id = int(user["id"])
+            accepted, message = auth.consume_email_code(
+                conn, user_id, payload.code, auth.DEVICE_CODE_PURPOSE
+            )
+            if not accepted:
+                failure = message
+            else:
+                previous = request.cookies.get(auth.SESSION_COOKIE)
+                if previous:
+                    auth.delete_session_by_token(conn, previous)
+                token, csrf_token = auth.create_session(
+                    conn, user_id, payload.remember,
+                    auth.rotulo_do_aparelho(request.headers.get("user-agent")),
+                )
+                device_token = auth.novo_token_de_dispositivo()
+                auth.registrar_dispositivo(
+                    conn, user_id, device_token,
+                    auth.rotulo_do_aparelho(request.headers.get("user-agent")),
+                )
+                ctx = orgs.resolve_context(conn, user_id)
+                result = {
+                    "id": user_id,
+                    "name": user["name"],
+                    "email": user["email"],
+                    "is_owner": config.is_owner(user["email"]),
+                    "role": ctx["role"],
+                    "org_name": ctx["org_name"],
+                }
+
+    if failure is not None or result is None:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=failure or auth.GENERIC_CODE_ERROR,
+        )
+
+    auth.clear_login_rate_limit(request, payload.email)
+    auth.set_session_cookies(request, response, token, csrf_token, payload.remember)
+    auth.set_device_cookie(request, response, device_token)
     return result
 
 @app.post("/api/auth/logout", status_code=status.HTTP_204_NO_CONTENT)

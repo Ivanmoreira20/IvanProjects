@@ -368,6 +368,10 @@ function startResendCountdown(seconds = RESEND_SECONDS) {
 async function doResend({ force = false } = {}) {
   if (resending) return;
   if (!force && resendLeft > 0) return;
+  if (verifyOrigin === 'device') {
+    setNote('Para receber um novo código, volte e entre de novo com sua senha.');
+    return;
+  }
   if (!pendingEmail) {
     showError('verify-error', 'Recomece o cadastro para receber um novo código.');
     return;
@@ -467,7 +471,9 @@ async function submitVerify(e) {
   verifying = true;
   setPending(button, true, 'Confirmar e entrar');
   try {
-    const res = await api.verify(pendingEmail, code, pendingRemember);
+    const res = verifyOrigin === 'device'
+      ? await api.verifyDevice(pendingEmail, code, pendingRemember)
+      : await api.verify(pendingEmail, code, pendingRemember);
     const user = (res && typeof res === 'object' && res.user) ? res.user : res;
 
     stopResendCountdown();
@@ -538,6 +544,17 @@ async function submitLogin(e) {
         origin: 'login',
         autoResend: true,
         note: 'Sua conta ainda não foi confirmada. Enviamos um novo código para o seu e-mail.',
+      });
+      return;
+    }
+
+    if (err?.status === 403 && code === 'device_verification') {
+      saveRemember(remember);
+      pendingRemember = remember;
+      document.getElementById('login-password').value = '';
+      await openVerify(authEmail(err) || email, {
+        origin: 'device',
+        note: 'Novo dispositivo detectado. Enviamos um código para o seu e-mail para confirmar que é você.',
       });
       return;
     }

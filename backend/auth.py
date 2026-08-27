@@ -214,6 +214,51 @@ def clear_session_cookies(request: Request, response: Response) -> None:
         CSRF_COOKIE, path="/", samesite="lax", secure=secure, httponly=False
     )
 
+DEVICE_COOKIE = "vertex_device"
+DEVICE_COOKIE_MAX_AGE = 400 * 24 * 60 * 60
+DEVICE_CODE_PURPOSE = "device"
+
+def novo_token_de_dispositivo() -> str:
+    return secrets.token_urlsafe(32)
+
+def set_device_cookie(request: Request, response: Response, token: str) -> None:
+    response.set_cookie(
+        DEVICE_COOKIE,
+        token,
+        httponly=True,
+        max_age=DEVICE_COOKIE_MAX_AGE,
+        path="/",
+        samesite="lax",
+        secure=_is_secure(request),
+    )
+
+def dispositivo_conhecido(conn: db.Connection, user_id: int, token: str | None) -> bool:
+    if not token:
+        return False
+    row = conn.execute(
+        "SELECT id FROM known_devices WHERE user_id = ? AND device_hash = ?",
+        (user_id, sha256_hex(token)),
+    ).fetchone()
+    if row is None:
+        return False
+    conn.execute(
+        "UPDATE known_devices SET last_seen_at = ? WHERE id = ?",
+        (db.iso(db.utcnow()), int(row["id"])),
+    )
+    return True
+
+def registrar_dispositivo(
+    conn: db.Connection, user_id: int, token: str, label: str = ""
+) -> None:
+    agora = db.iso(db.utcnow())
+    conn.execute(
+        """INSERT INTO known_devices (user_id, device_hash, label, created_at, last_seen_at)
+           VALUES (?, ?, ?, ?, ?)
+           ON CONFLICT(user_id, device_hash)
+           DO UPDATE SET last_seen_at = excluded.last_seen_at""",
+        (user_id, sha256_hex(token), (label or "")[:60], agora, agora),
+    )
+
 EMAIL_CODE_TTL = timedelta(minutes=15)
 EMAIL_CODE_MAX_ATTEMPTS = 5
 EMAIL_CODE_PURPOSE = "verify_email"

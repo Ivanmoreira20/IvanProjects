@@ -127,6 +127,7 @@ ASSUNTOS = {
     "verify_email": "Seu código de verificação: {code}",
     "reset_password": "Código para redefinir sua senha: {code}",
     "change_email": "Confirme seu novo e-mail: {code}",
+    "device": "Novo acesso à sua conta: código {code}",
 }
 
 def build_message(email: str, name: str, code: str, tipo: str = "verify_email") -> EmailMessage:

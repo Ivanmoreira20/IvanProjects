@@ -1006,6 +1006,16 @@ CREATE INDEX IF NOT EXISTS idx_leads_owner ON leads(user_id, owner_user_id);
 CREATE INDEX IF NOT EXISTS idx_subs_user ON subscriptions(user_id);
 CREATE INDEX IF NOT EXISTS idx_subs_ref  ON subscriptions(provider, provider_ref)
     WHERE provider_ref <> '';
+
+CREATE TABLE IF NOT EXISTS known_devices (
+    id           INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id      INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    device_hash  TEXT NOT NULL,
+    label        TEXT NOT NULL DEFAULT '',
+    created_at   TEXT NOT NULL,
+    last_seen_at TEXT NOT NULL
+);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_known_devices ON known_devices(user_id, device_hash);
 """
 
 Connection = sqlite3.Connection

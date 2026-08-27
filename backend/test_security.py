@@ -6050,3 +6050,67 @@ def test_76i_conta_com_lead_preenchido_oculta_a_trilha_sozinha():
     assert cliente.get("/api/onboarding").json()["oculto_auto"] is False
     create_lead(cliente, name="Completo", value=200.0, whatsapp="11999998888")
     assert cliente.get("/api/onboarding").json()["oculto_auto"] is True
+
+def _conta_verificada_com_dispositivo(email):
+    c = new_client()
+    assert registrar(c, email).status_code == 202
+    assert verificar(c, email, ultimo_codigo(email)).status_code == 200
+    return c
+
+def test_88a_dispositivo_novo_pede_codigo_e_nao_cria_sessao(monkeypatch):
+    monkeypatch.setenv("VERTEX_DEVICE_CHECK", "1")
+    email = novo_email("disp")
+    _conta_verificada_com_dispositivo(email)
+
+    outro = new_client()
+    r = login(outro, (email, SENHA_PADRAO))
+    assert r.status_code == 403, r.text
+    assert r.json()["detail"] == "device_verification"
+    assert sem_sessao(outro)
+
+def test_88b_verificar_dispositivo_cria_sessao_e_passa_a_reconhecer(monkeypatch):
+    monkeypatch.setenv("VERTEX_DEVICE_CHECK", "1")
+    email = novo_email("disp")
+    _conta_verificada_com_dispositivo(email)
+
+    outro = new_client()
+    assert login(outro, (email, SENHA_PADRAO)).status_code == 403
+    codigo = ultimo_codigo(email)
+    v = outro.post(
+        "/api/auth/verify-device",
+        json={"email": email, "code": codigo, "remember": False},
+    )
+    assert v.status_code == 200, v.text
+    assert not sem_sessao(outro)
+
+    novamente = login(outro, (email, SENHA_PADRAO))
+    assert novamente.status_code == 200, novamente.text
+
+def test_88c_dispositivo_do_cadastro_nao_e_desafiado(monkeypatch):
+    monkeypatch.setenv("VERTEX_DEVICE_CHECK", "1")
+    email = novo_email("disp")
+    c = _conta_verificada_com_dispositivo(email)
+    assert login(c, (email, SENHA_PADRAO)).status_code == 200
+
+def test_88d_codigo_de_dispositivo_errado_falha(monkeypatch):
+    monkeypatch.setenv("VERTEX_DEVICE_CHECK", "1")
+    email = novo_email("disp")
+    _conta_verificada_com_dispositivo(email)
+    outro = new_client()
+    assert login(outro, (email, SENHA_PADRAO)).status_code == 403
+    real = ultimo_codigo(email)
+    errado = "000000" if real != "000000" else "111111"
+    v = outro.post(
+        "/api/auth/verify-device",
+        json={"email": email, "code": errado, "remember": False},
+    )
+    assert v.status_code == 400
+    assert sem_sessao(outro)
+
+def test_88e_sem_flag_dispositivo_novo_entra_direto(monkeypatch):
+    monkeypatch.delenv("VERTEX_DEVICE_CHECK", raising=False)
+    email = novo_email("disp")
+    _conta_verificada_com_dispositivo(email)
+    outro = new_client()
+    r = login(outro, (email, SENHA_PADRAO))
+    assert r.status_code == 200, r.text
