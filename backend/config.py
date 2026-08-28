@@ -39,6 +39,10 @@ DEFAULTS: dict[str, str] = {
 
     "VERTEX_DEVICE_CHECK": "",
 
+    "VERTEX_OAUTH_SIGNING_KEY": "",
+
+    "VERTEX_SCRYPT_N": "",
+
     "MP_ACCESS_TOKEN": "",
 
     "MP_PUBLIC_KEY": "",
@@ -55,6 +59,7 @@ SECRET_KEYS = frozenset(
         "GEMINI_API_KEY",
         "MP_ACCESS_TOKEN",
         "MP_WEBHOOK_SECRET",
+        "VERTEX_OAUTH_SIGNING_KEY",
     }
 )
 

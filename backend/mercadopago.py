@@ -176,6 +176,6 @@ def criar_cobranca_avulsa(
         "status": "pendente",
     }
 
-def cancelar_assinatura(preapproval_id: str) -> None:
-    _pedir("PUT", f"/preapproval/{preapproval_id}", {"status": "cancelled"})
+def cancelar_assinatura(preapproval_id: str, idem: str = "") -> None:
+    _pedir("PUT", f"/preapproval/{preapproval_id}", {"status": "cancelled"}, idem=idem)
     logger.info("Assinatura %s cancelada no Mercado Pago.", preapproval_id)

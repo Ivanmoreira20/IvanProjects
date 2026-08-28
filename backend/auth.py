@@ -5,6 +5,7 @@ import hashlib
 import hmac
 import ipaddress
 import logging
+import os
 import secrets
 import threading
 from datetime import timedelta
@@ -17,11 +18,15 @@ import orgs
 
 logger = logging.getLogger("vertex.auth")
 
-SCRYPT_N = 2**15
+SCRYPT_N = int(os.environ.get("VERTEX_SCRYPT_N") or 2**17)
 SCRYPT_R = 8
 SCRYPT_P = 1
 SCRYPT_DKLEN = 64
 SALT_BYTES = 16
+
+SCRYPT_N_MAX = 2**18
+SCRYPT_R_MAX = 16
+SCRYPT_P_MAX = 4
 
 def _maxmem_for(n: int, r: int, p: int) -> int:
     return 128 * n * r * p + (16 * 1024 * 1024)
@@ -61,6 +66,9 @@ def verify_password(password: str, stored: str) -> bool:
         salt = base64.b64decode(salt_b64)
         expected = base64.b64decode(hash_b64)
     except (ValueError, TypeError, base64.binascii.Error):
+        return False
+
+    if not (1 <= n <= SCRYPT_N_MAX and 1 <= r <= SCRYPT_R_MAX and 1 <= p <= SCRYPT_P_MAX):
         return False
 
     derived = hashlib.scrypt(

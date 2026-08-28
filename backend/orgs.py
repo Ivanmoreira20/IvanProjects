@@ -37,9 +37,15 @@ def pode(role: str, acao: str) -> bool:
 def escopo_owner(user: dict[str, Any]) -> int | None:
     return None if pode(user.get("role", ""), VER_TODOS_LEADS) else int(user["actor_id"])
 
+_COLUNAS_VISIBILIDADE = frozenset(
+    {"owner_user_id", "l.owner_user_id", "a.owner_user_id"}
+)
+
 def clausula_visibilidade(
     owner_scope: int | None, coluna: str = "owner_user_id"
 ) -> tuple[str, list[Any]]:
+    if coluna not in _COLUNAS_VISIBILIDADE:
+        raise ValueError(f"coluna de visibilidade não permitida: {coluna!r}")
     if owner_scope is None:
         return "", []
     return f" AND ({coluna} = ? OR {coluna} IS NULL)", [owner_scope]

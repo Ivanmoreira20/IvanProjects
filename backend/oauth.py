@@ -39,7 +39,19 @@ FAILURE_REDIRECT = "/app#/login?erro=google"
 
 DISABLED_DETAIL = "Login com Google não está configurado neste servidor"
 
-_SIGNING_KEY = secrets.token_bytes(32)
+def _carregar_signing_key() -> bytes:
+    bruto = config.get("VERTEX_OAUTH_SIGNING_KEY")
+    if bruto:
+        try:
+            chave = base64.b64decode(bruto)
+        except (ValueError, base64.binascii.Error):
+            chave = b""
+        if len(chave) >= 32:
+            return chave
+        logger.warning("VERTEX_OAUTH_SIGNING_KEY inválida ou curta; usando chave efêmera.")
+    return secrets.token_bytes(32)
+
+_SIGNING_KEY = _carregar_signing_key()
 
 def _b64url(raw: bytes) -> str:
     return base64.urlsafe_b64encode(raw).rstrip(b"=").decode("ascii")

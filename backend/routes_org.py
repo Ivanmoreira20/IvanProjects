@@ -164,6 +164,11 @@ def mudar_papel_membro(
     member_id: Annotated[int, Path(ge=1)], payload: MemberRoleIn, user: CurrentUser
 ) -> dict[str, Any]:
     orgs.exigir(user, orgs.GERIR_EQUIPE)
+    if member_id == user["actor_id"]:
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail="Você não pode mudar o seu próprio papel.",
+        )
     with db.get_conn() as conn:
         alvo = orgs._membership(conn, user["org_id"], member_id)
         if alvo is None:

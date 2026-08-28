@@ -52,3 +52,10 @@ _backup_index.html
 /Nova pasta/
 deploy/capturas-antigas/
 *.thumbnail
+
+# Artefatos de auditoria de seguranca -- contem segredos/dumps, NUNCA versionar
+_audit*.md
+_audit*/
+**/osv/
+*_audit_*.md
+CODIGO-DE-VERIFICACAO.txt

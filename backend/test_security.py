@@ -23,6 +23,8 @@ BACKEND_DIR = Path(__file__).resolve().parent
 _TMP_DIR = Path(tempfile.mkdtemp(prefix="vertex_tests_"))
 os.environ["VERTEX_DB"] = str(_TMP_DIR / "vertex_test.db")
 
+os.environ.setdefault("VERTEX_SCRYPT_N", "16384")
+
 os.environ.pop("VERTEX_SEED", None)
 
 if str(BACKEND_DIR) not in sys.path:
@@ -6114,3 +6116,28 @@ def test_88e_sem_flag_dispositivo_novo_entra_direto(monkeypatch):
     outro = new_client()
     r = login(outro, (email, SENHA_PADRAO))
     assert r.status_code == 200, r.text
+
+def test_89a_verify_password_rejeita_parametros_absurdos():
+    envenenado = "scrypt$33554432$8$1$" + "A" * 24 + "$" + "B" * 88
+    assert auth.verify_password("qualquer", envenenado) is False
+
+def test_89b_verify_password_ainda_valida_hash_normal():
+    h = auth.hash_password("SenhaForte@123")
+    assert auth.verify_password("SenhaForte@123", h) is True
+    assert auth.verify_password("errada", h) is False
+
+def test_89c_admin_nao_muda_o_proprio_papel():
+    c = new_client()
+    r = login(c, ANA)
+    assert r.status_code == 200, r.text
+    meu_id = r.json()["id"]
+    pr = c.patch(f"/api/org/members/{meu_id}", json={"role": "vendedor"}, headers=csrf(c))
+    assert pr.status_code == 409, pr.text
+
+def test_89d_clausula_visibilidade_so_aceita_colunas_conhecidas():
+    sql, params = orgs.clausula_visibilidade(7, "owner_user_id")
+    assert "owner_user_id" in sql and params == [7]
+    sql2, params2 = orgs.clausula_visibilidade(7, "l.owner_user_id")
+    assert "l.owner_user_id" in sql2
+    with pytest.raises(ValueError):
+        orgs.clausula_visibilidade(7, "owner_user_id; DROP TABLE users")

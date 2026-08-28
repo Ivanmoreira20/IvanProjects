@@ -174,7 +174,11 @@ async def cancelar(user: CurrentUser) -> dict[str, Any]:
 
     if linha and linha["provider"] == mp.PROVEDOR and linha["provider_ref"] and linha["modo"] == billing.MODO_CARTAO:
         try:
-            await run_in_threadpool(mp.cancelar_assinatura, str(linha["provider_ref"]))
+            await run_in_threadpool(
+                mp.cancelar_assinatura,
+                str(linha["provider_ref"]),
+                f"vertex-cancel-{user_id}-{linha['provider_ref']}",
+            )
         except mp.MPIndisponivel:
             logger.warning("Cancelamento local sem provedor configurado (conta %s).", user_id)
         except mp.MPFalhou as erro:

@@ -1754,7 +1754,7 @@ class LeadOwnerIn(BaseModel):
 def assign_lead_owner(lead_id: int, payload: LeadOwnerIn, user: CurrentUser) -> dict[str, Any]:
     orgs.exigir(user, orgs.ATRIBUIR_LEAD)
     with db.get_conn() as conn:
-        antes = crm.fetch_lead(conn, lead_id, user["id"])
+        antes = crm.fetch_lead(conn, lead_id, user["id"], orgs.escopo_owner(user))
         nome_novo_dono = ""
         if payload.owner_user_id is not None:
             membro = conn.execute(
