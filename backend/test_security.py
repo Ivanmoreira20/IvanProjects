@@ -6141,3 +6141,47 @@ def test_89d_clausula_visibilidade_so_aceita_colunas_conhecidas():
     assert "l.owner_user_id" in sql2
     with pytest.raises(ValueError):
         orgs.clausula_visibilidade(7, "owner_user_id; DROP TABLE users")
+
+def _conta_verificada_id(email):
+    c = new_client()
+    assert registrar(c, email).status_code == 202
+    v = verificar(c, email, ultimo_codigo(email))
+    assert v.status_code == 200, v.text
+    return c, v.json()["id"]
+
+def test_90a_forca_bruta_dispara_stepup_por_email(monkeypatch):
+    monkeypatch.setenv("VERTEX_DEVICE_CHECK", "0")
+    email = novo_email("brute")
+    _, uid = _conta_verificada_id(email)
+    for _ in range(auth.BRUTE_THRESHOLD):
+        auth.registrar_falha_login(uid)
+    outro = new_client()
+    r = login(outro, (email, SENHA_PADRAO))
+    assert r.status_code == 403, r.text
+    assert r.json()["detail"] == "device_verification"
+    assert sem_sessao(outro)
+
+def test_90b_stepup_por_bruta_limpa_o_contador(monkeypatch):
+    monkeypatch.setenv("VERTEX_DEVICE_CHECK", "0")
+    email = novo_email("brute")
+    _, uid = _conta_verificada_id(email)
+    for _ in range(auth.BRUTE_THRESHOLD):
+        auth.registrar_falha_login(uid)
+    outro = new_client()
+    assert login(outro, (email, SENHA_PADRAO)).status_code == 403
+    v = outro.post(
+        "/api/auth/verify-device",
+        json={"email": email, "code": ultimo_codigo(email), "remember": False},
+    )
+    assert v.status_code == 200, v.text
+    mais = new_client()
+    assert login(mais, (email, SENHA_PADRAO)).status_code == 200
+
+def test_90c_abaixo_do_limiar_login_normal(monkeypatch):
+    monkeypatch.setenv("VERTEX_DEVICE_CHECK", "0")
+    email = novo_email("brute")
+    _, uid = _conta_verificada_id(email)
+    for _ in range(auth.BRUTE_THRESHOLD - 1):
+        auth.registrar_falha_login(uid)
+    outro = new_client()
+    assert login(outro, (email, SENHA_PADRAO)).status_code == 200

@@ -342,8 +342,13 @@ PLAN_WINDOW = 60 * 60
 PUBLIC_ACTION_LIMIT = 20
 PUBLIC_ACTION_WINDOW = 60 * 60
 
+BRUTE_BUCKET = "brute"
+BRUTE_WINDOW = 24 * 60 * 60
+BRUTE_THRESHOLD = 10
+
 MAX_RATE_WINDOW = max(
-    LOGIN_WINDOW, REGISTER_WINDOW, RESEND_WINDOW, VERIFY_WINDOW, PLAN_WINDOW, PUBLIC_ACTION_WINDOW
+    LOGIN_WINDOW, REGISTER_WINDOW, RESEND_WINDOW, VERIFY_WINDOW,
+    PLAN_WINDOW, PUBLIC_ACTION_WINDOW, BRUTE_WINDOW,
 )
 
 LOGIN_BUCKET = "login"
@@ -457,6 +462,27 @@ def enforce_verify_rate_limit(request: Request, email: str) -> None:
 def reset_rate_limits() -> None:
     with db.get_conn() as conn:
         conn.execute("DELETE FROM rate_hits")
+
+def registrar_falha_login(user_id: int) -> None:
+    with db.get_conn() as conn:
+        conn.execute(
+            "INSERT INTO rate_hits (bucket, hit_at) VALUES (?, ?)",
+            (rate_bucket(BRUTE_BUCKET, str(user_id)), db.iso(db.utcnow())),
+        )
+
+def excesso_de_falhas(conn: db.Connection, user_id: int) -> bool:
+    cutoff = db.iso(db.utcnow() - timedelta(seconds=BRUTE_WINDOW))
+    linha = conn.execute(
+        "SELECT COUNT(*) AS c FROM rate_hits WHERE bucket = ? AND hit_at > ?",
+        (rate_bucket(BRUTE_BUCKET, str(user_id)), cutoff),
+    ).fetchone()
+    return int(linha["c"]) >= BRUTE_THRESHOLD
+
+def limpar_falhas_login(conn: db.Connection, user_id: int) -> None:
+    conn.execute(
+        "DELETE FROM rate_hits WHERE bucket = ?",
+        (rate_bucket(BRUTE_BUCKET, str(user_id)),),
+    )
 
 UNAUTHENTICATED_DETAIL = "Sessão inválida ou expirada"
 

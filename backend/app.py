@@ -937,14 +937,18 @@ def login(payload: LoginIn, request: Request, response: Response) -> Any:
             auth.burn_password_time()
             raise invalid
         if not auth.verify_password(payload.password, user["password_hash"]):
+            auth.registrar_falha_login(int(user["id"]))
             raise invalid
 
         if int(user["email_verified"] or 0) == 0:
 
             pending_email = user["email"]
-        elif config.device_check_ativo() and not auth.dispositivo_conhecido(
-            conn, int(user["id"]), request.cookies.get(auth.DEVICE_COOKIE)
-        ):
+        elif (
+            config.device_check_ativo()
+            and not auth.dispositivo_conhecido(
+                conn, int(user["id"]), request.cookies.get(auth.DEVICE_COOKIE)
+            )
+        ) or auth.excesso_de_falhas(conn, int(user["id"])):
 
             code = auth.issue_email_code(conn, int(user["id"]), auth.DEVICE_CODE_PURPOSE)
             device_challenge = (user["email"], user["name"], code)
@@ -957,6 +961,7 @@ def login(payload: LoginIn, request: Request, response: Response) -> Any:
                 conn, int(user["id"]), payload.remember,
                 auth.rotulo_do_aparelho(request.headers.get("user-agent")),
             )
+            auth.limpar_falhas_login(conn, int(user["id"]))
             ctx = orgs.resolve_context(conn, int(user["id"]))
             result = {
                 "id": int(user["id"]),
@@ -1025,6 +1030,7 @@ def verify_device(payload: VerifyIn, request: Request, response: Response) -> di
                     conn, user_id, device_token,
                     auth.rotulo_do_aparelho(request.headers.get("user-agent")),
                 )
+                auth.limpar_falhas_login(conn, user_id)
                 ctx = orgs.resolve_context(conn, user_id)
                 result = {
                     "id": user_id,
