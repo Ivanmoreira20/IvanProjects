@@ -59,3 +59,7 @@ _audit*/
 **/osv/
 *_audit_*.md
 CODIGO-DE-VERIFICACAO.txt
+
+# Mais artefatos de auditoria/QA e backups de redesign
+RELATORIO_*.md
+**/_backup_*

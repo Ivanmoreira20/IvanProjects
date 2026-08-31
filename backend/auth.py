@@ -328,6 +328,7 @@ def consume_email_code(
     return False, GENERIC_CODE_ERROR
 
 LOGIN_LIMIT = 5
+LOGIN_IP_LIMIT = 50
 LOGIN_WINDOW = 15 * 60
 REGISTER_LIMIT = 3
 REGISTER_WINDOW = 60 * 60
@@ -411,15 +412,24 @@ def rate_limit_ip(request: Request) -> str:
 def _login_key(request: Request, email: str) -> str:
     return f"{rate_limit_ip(request)}|{email.strip().lower()}"
 
+def _login_ip_key(request: Request) -> str:
+    return f"ip|{rate_limit_ip(request)}"
+
 def enforce_login_rate_limit(request: Request, email: str) -> None:
     if _register_hit(LOGIN_BUCKET, _login_key(request, email), LOGIN_LIMIT, LOGIN_WINDOW):
         raise HTTPException(
             status_code=status.HTTP_429_TOO_MANY_REQUESTS,
             detail="Muitas tentativas de login. Tente novamente em alguns minutos.",
         )
+    if _register_hit(LOGIN_BUCKET, _login_ip_key(request), LOGIN_IP_LIMIT, LOGIN_WINDOW):
+        raise HTTPException(
+            status_code=status.HTTP_429_TOO_MANY_REQUESTS,
+            detail="Muitas tentativas de login deste dispositivo. Tente novamente em alguns minutos.",
+        )
 
 def clear_login_rate_limit(request: Request, email: str) -> None:
     clear_rate_bucket(LOGIN_BUCKET, _login_key(request, email))
+    clear_rate_bucket(LOGIN_BUCKET, _login_ip_key(request))
 
 def enforce_register_rate_limit(request: Request) -> None:
     if _register_hit(REGISTER_BUCKET, rate_limit_ip(request), REGISTER_LIMIT, REGISTER_WINDOW):

@@ -28,7 +28,7 @@ export function renderNotifications() {
   contador.textContent = unread > 99 ? '99+' : String(unread);
   contador.hidden = unread === 0;
   document.getElementById('notif-btn')?.setAttribute(
-    'aria-label', unread ? `Notificações: ${unread} não lidas` : 'Notificações',
+    'aria-label', unread ? `Notificações: ${unread} ${unread === 1 ? 'não lida' : 'não lidas'}` : 'Notificações',
   );
 
   clear(lista);

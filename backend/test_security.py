@@ -6185,3 +6185,21 @@ def test_90c_abaixo_do_limiar_login_normal(monkeypatch):
         auth.registrar_falha_login(uid)
     outro = new_client()
     assert login(outro, (email, SENHA_PADRAO)).status_code == 200
+
+def test_91a_teto_global_por_ip_pega_spray_variando_email():
+    c = new_client()
+    ultimo = 200
+    for i in range(auth.LOGIN_IP_LIMIT + 2):
+        r = c.post("/api/auth/login",
+                   json={"email": f"spray{i}@x.test", "password": "errada", "remember": False})
+        ultimo = r.status_code
+    assert ultimo == 429, f"esperava 429 ao fim do spray por IP, veio {ultimo}"
+
+def test_91b_login_valido_zera_o_teto_por_ip():
+    email = novo_email("ipreset")
+    c, _ = _conta_verificada_id(email)
+    # algumas tentativas erradas variando email (enche o balde do IP)
+    for i in range(auth.LOGIN_IP_LIMIT - 2):
+        c.post("/api/auth/login", json={"email": f"x{i}@y.test", "password": "z", "remember": False})
+    # login correto deve passar e zerar o balde do IP
+    assert login(c, (email, SENHA_PADRAO)).status_code == 200
